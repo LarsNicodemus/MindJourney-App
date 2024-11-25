@@ -6,12 +6,21 @@
 //
 
 import SwiftUI
+import Firebase
+
+
 
 @main
 struct MindJourney_Projektwoche2App: App {
+    @StateObject private var loginVM: LoginViewModel = LoginViewModel()
+
+    init() {
+        FirebaseApp.configure()
+    }
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            LoginView()
+                .environmentObject(loginVM)
         }
     }
 }
