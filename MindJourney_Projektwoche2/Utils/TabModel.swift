@@ -20,11 +20,11 @@ enum TabModel: String, CaseIterable {
         }
     }
     
-//    var navigateTo: AnyView {
-//        switch self {
-//        case .today: return AnyView(TodayView())
-//        case .journals: return AnyView(JournalsView())
-//        case .settings: return AnyView(SettingsView())
-//        }
-//    }
+    var navigateTo: AnyView {
+        switch self {
+        case .today: return AnyView(TodayView())
+        case .journals: return AnyView(JournalsView())
+        case .settings: return AnyView(SettingsView())
+        }
+    }
 }
