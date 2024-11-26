@@ -11,7 +11,7 @@ struct Day {
     var text: String
     var date: Date
     var mood: Mood
-    var pictures: [String]
+    var pictures: [UIImage]
     var audios: [String]
     var tags: [String]
     var weather: Weather
