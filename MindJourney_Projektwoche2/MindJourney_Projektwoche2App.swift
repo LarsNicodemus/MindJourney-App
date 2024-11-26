@@ -19,8 +19,10 @@ struct MindJourney_Projektwoche2App: App {
     }
     var body: some Scene {
         WindowGroup {
+
             LoginView()
                 .environmentObject(loginVM)
+          
         }
     }
 }
