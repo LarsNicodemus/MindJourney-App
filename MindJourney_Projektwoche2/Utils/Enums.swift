@@ -26,3 +26,5 @@ enum WeatherAPIError: Error {
         }
     }
 }
+
+
