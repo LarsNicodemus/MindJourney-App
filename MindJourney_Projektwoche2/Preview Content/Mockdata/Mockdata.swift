@@ -11,8 +11,8 @@ import SwiftUI
 var MOCKDAY = Day(
     text: "Heute war ein guter Tag",
     date: Date(),
-    mood: .good,
-    pictures: ["pics1","pics2","pics3"],
+    mood: .angry,
+    pictures: [],
     audios: [],
     tags: ["guter Tag", "Wetter gut", "spaß am Coden", "gute Laune", "Frisur sitzt"],
     weather: Weather(temperatur: 12.1, beschreibung: "wolkig", datum: Date()),

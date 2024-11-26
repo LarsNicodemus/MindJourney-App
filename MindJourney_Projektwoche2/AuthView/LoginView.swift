@@ -28,7 +28,7 @@ struct LoginView: View {
                 }
             }
             .navigationDestination(isPresented: $loginVM.userIsLoggedIn) {
-                ContentView()
+                AppNavigationView()
             }
         }
     }
