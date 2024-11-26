@@ -1,19 +1,21 @@
 //
-//  LoginView.swift
+//  RegisterView.swift
 //  MindJourney_Projektwoche2
 //
-//  Created by Andreas Beer on 25.11.24.
+//  Created by Andreas Beer on 26.11.24.
 //
 
 import SwiftUI
 
-struct LoginView: View {
+struct RegisterView: View {
+    @EnvironmentObject var loginVM: AuthViewModel
+    
     var body: some View {
-        VStack{
-            TextFieldSubView()
+        VStack {
+            RegisterSubView()
         }
-        .background{
-            ZStack{
+        .background {
+            ZStack {
                 Color.black
                     .ignoresSafeArea()
                 
@@ -28,5 +30,6 @@ struct LoginView: View {
 }
 
 #Preview {
-    LoginView()
+    RegisterView()
+        .environmentObject(AuthViewModel())
 }

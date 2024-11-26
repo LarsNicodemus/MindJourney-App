@@ -12,7 +12,7 @@ import Firebase
 
 @main
 struct MindJourney_Projektwoche2App: App {
-    @StateObject private var loginVM: LoginViewModel = LoginViewModel()
+    @StateObject private var loginVM: AuthViewModel = AuthViewModel()
 
     init() {
         FirebaseApp.configure()
