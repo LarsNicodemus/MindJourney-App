@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Target {
+struct Goal {
     
     var id = UUID()
     var title: String

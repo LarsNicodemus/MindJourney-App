@@ -16,7 +16,6 @@ struct AppNavigationView: View {
     }
     
     var body: some View {
-        NavigationStack {
             ZStack{
                 VStack{
                     TabView(selection: $activeTab) {
@@ -32,7 +31,7 @@ struct AppNavigationView: View {
                     CustomTabBarView(activeTab: $activeTab)
                 }
             }
-        }
+            .toolbar(.hidden)
     }
 }
 
