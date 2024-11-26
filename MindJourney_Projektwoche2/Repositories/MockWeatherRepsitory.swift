@@ -1,8 +1,12 @@
+////
+////  MockWeatherRepsitory.swift
+////  Test1
+////
+////  Created by Lars Nicodemus on 25.11.24.
+////
+//import Foundation
 //
-//  MockWeatherRepsitory.swift
-//  Test1
 //
-//  Created by Lars Nicodemus on 25.11.24.
 //
 import Foundation
 
@@ -213,3 +217,4 @@ class MockWeatherRepository: WeatherRepository {
         )
     }
 }
+
