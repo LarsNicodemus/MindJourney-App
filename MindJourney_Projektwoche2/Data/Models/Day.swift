@@ -18,3 +18,6 @@ struct Day {
     var colors: [UIColor]
     var goal: Bool
 }
+
+
+

@@ -10,9 +10,22 @@
 		D3E0A5B82CF47CF400530002 /* MindJourney_Projektwoche2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MindJourney_Projektwoche2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		D3E0A7252CF5DC3700530002 /* Exceptions for "MindJourney_Projektwoche2" folder in "MindJourney_Projektwoche2" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"MindJourney-Projektwoche2-Info.plist",
+			);
+			target = D3E0A5B72CF47CF400530002 /* MindJourney_Projektwoche2 */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		D3E0A5BA2CF47CF400530002 /* MindJourney_Projektwoche2 */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				D3E0A7252CF5DC3700530002 /* Exceptions for "MindJourney_Projektwoche2" folder in "MindJourney_Projektwoche2" target */,
+			);
 			path = MindJourney_Projektwoche2;
 			sourceTree = "<group>";
 		};
@@ -255,6 +268,10 @@
 				DEVELOPMENT_TEAM = 9KWUTK4PE3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "MindJourney-Projektwoche2-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Um Sprachaufzeichnungen zu übernehmen Bitte Zugriff auf Mikrofon Freigeben";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -284,6 +301,10 @@
 				DEVELOPMENT_TEAM = 9KWUTK4PE3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "MindJourney-Projektwoche2-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Um Sprachaufzeichnungen zu übernehmen Bitte Zugriff auf Mikrofon Freigeben";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
