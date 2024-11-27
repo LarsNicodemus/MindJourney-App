@@ -15,6 +15,6 @@ struct Day {
     var audios: [String]
     var tags: [String]
     var weather: Weather
-    var colors: [UIColor]
+    var colors: [Color]
     var goal: Bool
 }

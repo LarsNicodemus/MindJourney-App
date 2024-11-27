@@ -9,14 +9,14 @@ import SwiftUI
 
 
 var MOCKDAY = Day(
-    text: "Heute war ein guter Tag",
+    text: "Heute war ein Tag voller Gegensätze. Morgens begann alles so ruhig - ich wachte mit dem sanften Schein der Novembersonne auf, die durch die Vorhänge drang. Eine Tasse Kaffee und meine Gedanken schienen noch in einem warmen Nebel zu schweben.Gegen Mittag änderte sich die Stimmung komplett. Ein wichtiges Meeting bei der Arbeit forderte all meine Konzentration. Die Präsentation über unser neues Projektkonzept lief überraschend gut - meine Kollegin Sarah nickte anerkennend, als ich meine Ideen vorstellte. Diese Momente der Bestätigung sind es, die mir Kraft geben.Nach der Arbeit traf ich mich mit Alex im kleinen Café an der Ecke. Wir sprachen über seine bevorstehende Reise nach Südamerika und ich spürte diese unbändige Sehnsucht nach Veränderung und Abenteuer. Manchmal frage ich mich, ob ich mutiger sein sollte.Der Abend wurde ruhiger. Ein warmer Tee, ein gutes Buch und die leise Musik im Hintergrund ließen mich zur Ruhe kommen. Ich dachte über die kleinen Momente nach, die den Tag besonders gemacht haben - das Lächeln der Verkäuferin, der kurze Moment der Stille im Büro, der Duft von frischem Brot.Morgen steht ein Wochenende voller Möglichkeiten bevor. Ich bin gespannt, was es bringen wird.Gute Nacht.",
     date: Date(),
-    mood: .good,
-    pictures: ["pics1","pics2","pics3"],
-    audios: [],
-    tags: ["guter Tag", "Wetter gut", "spaß am Coden", "gute Laune", "Frisur sitzt"],
+    mood: .calm,
+    pictures: [],
+    audios: ["test1","test2","test3","test4","test5",],
+    tags: ["guter Tag", "Wetter gut", "spaß am Coden", "gute Laune", "Frisur sitzt" , "Wetter gut", "spaß am Coden", "gute Laune", "Frisur sitzt", "Frisur sitzt" , "Wetter gut", "spaß am Coden", "gute Laune", "Frisur sitzt","guter Tag", "Wetter gut", "spaß am Coden", "gute Laune", "Frisur sitzt" , "Wetter gut", "spaß am Coden", "gute Laune", "Frisur sitzt", "Frisur sitzt" , "Wetter gut", "spaß am Coden", "gute Laune", "Frisur sitzt"],
     weather: Weather(temperatur: 12.1, beschreibung: "wolkig", datum: Date()),
-    colors: [.blue],
+    colors: [.red],
     goal: false
 )
 

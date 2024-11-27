@@ -28,3 +28,17 @@ enum WeatherAPIError: Error {
 }
 
 
+enum WeatherEmoji: String, CaseIterable {
+    
+    case sunny = "Glücklich"
+    case snow = "Zufrieden"
+    case rainy = "Motiviert"
+   
+    var emoji: String {
+        switch self {
+        case .sunny: "☀️"
+        case .snow: "🌨️"
+        case .rainy: "🌧️"
+        }
+    }
+}
