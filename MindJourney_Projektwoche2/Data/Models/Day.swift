@@ -18,3 +18,6 @@ struct Day {
     var colors: [Color]
     var goal: Bool
 }
+
+
+
