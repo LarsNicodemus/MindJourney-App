@@ -67,6 +67,14 @@ class RecorderViewModel: NSObject, ObservableObject, AVAudioRecorderDelegate, AV
     
     func startRecording() {
         stopAudio()
+       
+        do {
+                    try AVAudioSession.sharedInstance().setCategory(.playAndRecord, mode: .default)
+                    try AVAudioSession.sharedInstance().overrideOutputAudioPort(.speaker)
+                    try AVAudioSession.sharedInstance().setActive(true)
+                } catch {
+                    print("Failed to setup Audiosession")
+                }
         
             let formatter = DateFormatter()
             formatter.dateFormat = "ddMMyyyy_HHmmss"
@@ -77,20 +85,24 @@ class RecorderViewModel: NSObject, ObservableObject, AVAudioRecorderDelegate, AV
             let settings = [
                 AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
                 AVSampleRateKey: 44100,
-                AVNumberOfChannelsKey: 2,
+                AVNumberOfChannelsKey: 1,
                 AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue
             ]
 
-            do {
+        do {
                 if let audioFilename = path {
                     audioRecorder = try AVAudioRecorder(url: audioFilename, settings: settings)
-                    audioRecorder?.record()
-                    isRecording = true
-                    recordingDuration = 0
-                    
-                    // Starte Timer für die Aufnahme
-                    recordingTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
-                        self.recordingDuration += 1
+                    audioRecorder?.delegate = self
+                    audioRecorder?.prepareToRecord()
+
+                    if audioRecorder?.isRecording == false {
+                        audioRecorder?.record()
+                        isRecording = true
+                        recordingDuration = 0
+                        startRecordingTimer() 
+                        print("Aufnahme gestartet: \(audioFilename)")
+                    } else {
+                        print("Recorder ist bereits aktiv.")
                     }
                 }
             } catch {
@@ -167,4 +179,11 @@ class RecorderViewModel: NSObject, ObservableObject, AVAudioRecorderDelegate, AV
                 recordedFiles = filePaths.map { URL(fileURLWithPath: $0) }
             }
         }
+    
+    private func startRecordingTimer() {
+        recordingTimer?.invalidate()
+        recordingTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
+            self.recordingDuration += 1
+        }
+    }
 }

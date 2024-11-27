@@ -10,7 +10,6 @@ import SwiftUI
 struct JournalsView: View {
     var body: some View {
         Text("Journals")
-        RecorderView2()
     }
 }
 

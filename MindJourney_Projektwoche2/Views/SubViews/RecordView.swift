@@ -1,5 +1,5 @@
 //
-//  RecorderView.swift
+//  RecordView.swift
 //  MindJourney_Projektwoche2
 //
 //  Created by Muhammet Incirkus on 26.11.24.
@@ -8,7 +8,7 @@
 import AVFoundation
 import SwiftUI
 
-struct RecorderView2: View {
+struct RecordView: View {
 
     @StateObject private var recorder = RecorderViewModel()
 
@@ -37,6 +37,9 @@ struct RecorderView2: View {
                 )
                 .foregroundColor(.red)
                 .padding()
+            }.onAppear{
+//                recorder.startRecording()
+//                recorder.stopRecording()
             }
             VStack {
 
@@ -69,5 +72,5 @@ struct RecorderView2: View {
 }
 
 #Preview {
-    RecorderView2()
+    RecordView()
 }
