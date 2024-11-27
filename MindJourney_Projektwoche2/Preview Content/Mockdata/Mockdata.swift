@@ -22,3 +22,41 @@ var MOCKDAY = Day(
 
 
 
+var MOCKGOAL = Goal(
+    title: "Bewerbung versenden",
+    descriptionText: "bis zum 10.12.24 möchte ich min. 10 Bewerbungen versenden.",
+    createDate: "20.11.2024",
+    deadline: "10.12.2024")
+
+var MOCKGOALS = [
+    Goal(
+        id: UUID(),
+        title: "Bewerbung versenden",
+        descriptionText: "bis zum 10.12.24 möchte ich min. 10 Bewerbungen versenden.",
+        createDate: "20.11.2024",
+        deadline: "10.12.2024"),
+    Goal(
+        id: UUID(),
+        title: "Bewerbung versenden",
+        descriptionText: "bis zum 10.12.24 möchte ich min. 10 Bewerbungen versenden.",
+        createDate: "20.11.2024",
+        deadline: "10.12.2024"),
+    Goal(
+        id: UUID(),
+        title: "Bewerbung versenden",
+        descriptionText: "bis zum 10.12.24 möchte ich min. 10 Bewerbungen versenden.",
+        createDate: "20.11.2024",
+        deadline: "10.12.2024"),
+    Goal(
+        id: UUID(),
+        title: "Bewerbung versenden",
+        descriptionText: "bis zum 10.12.24 möchte ich min. 10 Bewerbungen versenden.",
+        createDate: "20.11.2024",
+        deadline: "10.12.2024"),
+    Goal(
+        id: UUID(),
+        title: "Bewerbung versenden",
+        descriptionText: "bis zum 10.12.24 möchte ich min. 10 Bewerbungen versenden.",
+        createDate: "20.11.2024",
+        deadline: "10.12.2024"),
+]

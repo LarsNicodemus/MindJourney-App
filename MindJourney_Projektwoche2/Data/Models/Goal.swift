@@ -7,11 +7,13 @@
 
 import SwiftUI
 
-struct Goal {
+struct Goal: Identifiable {
     
     var id = UUID()
     var title: String
     var descriptionText: String
-    var createDate: Date
-    var deadline: Data
+    var createDate: String
+    var deadline: String
+    var isCompleted = false
 }
+
