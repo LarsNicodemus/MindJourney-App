@@ -8,52 +8,44 @@
 import SwiftUI
 
 struct JournalDayView: View {
-    var journalEntry: Day = MOCKDAY
-    @State var tagsVisible: Bool = false
-    @State var audiosVisible: Bool = false
-    @State var goalsVisible: Bool = false
-    @State var showFullText: Bool = false
-    @State var weatherEmoji: WeatherEmoji = .rainy
-    @State var currentIndex = 0
-    @State var selectedImageIndex = 0
-    @State var preview = false
-    @State var swipeOffset: CGFloat = 0
-    @State var goalChecked = false
+    @StateObject var journalVM: JournalEntryViewModel = JournalEntryViewModel()
     var body: some View {
 
         ZStack {
             ScrollView {
                 VStack(alignment: .leading) {
+
+                    if !journalVM.journalEntry.pictures.isEmpty {
                         PicturePreviewView(
-                            images: journalEntry.pictures,
+                            images: journalVM.journalEntry.pictures,
                             onTapImage: { index in
-                                selectedImageIndex = index
-                                preview = true
+                                journalVM.selectedImageIndex = index
+                                journalVM.preview = true
                             }
                         )
                         .frame(maxWidth: .infinity, maxHeight: 400)
-                    
+                    }
                     DayTextMoodWeatherView(
-                        journalEntry: journalEntry, showFullText: $showFullText,
-                        weatherEmoji: $weatherEmoji)
+                        journalEntry: journalVM.journalEntry, showFullText: $journalVM.showFullText,
+                        weatherEmoji: $journalVM.weatherEmoji)
 
-                    if !journalEntry.audios.isEmpty {
+                    if !journalVM.journalEntry.audios.isEmpty {
                         AudioPlayView(
-                            jEN: journalEntry,
-                            audio: journalEntry.audios.first ?? "")
+                            jEN: journalVM.journalEntry,
+                            audio: journalVM.journalEntry.audios.first ?? "")
                     }
-                    if !journalEntry.goal {
-                        GoalSubView(goalisChecked: $goalChecked)
+                    if !journalVM.journalEntry.goal {
+                        GoalSubView(goalisChecked: $journalVM.goalChecked)
                     }
-                    if !journalEntry.tags.isEmpty {
+                    if !journalVM.journalEntry.tags.isEmpty {
                         HStack {
                             HStack {
                                 Text("Tags:")
                                 Button(action: {
-                                    tagsVisible.toggle()
+                                    journalVM.tagsVisible.toggle()
                                 }) {
                                     Image(
-                                        systemName: tagsVisible
+                                        systemName: journalVM.tagsVisible
                                             ? "chevron.up" : "chevron.down")
                                 }
                             }
@@ -61,17 +53,17 @@ struct JournalDayView: View {
                         }
                     }
                     TagsSubView(
-                        journalEntry: journalEntry, tagsVisible: $tagsVisible)
+                        journalEntry: journalVM.journalEntry, tagsVisible: $journalVM.tagsVisible)
                 }
                 .padding()
             }
             .background(
-                journalEntry.colors.first.opacity(0.1).ignoresSafeArea())
-            if preview {
+                journalVM.journalEntry.colors.first.opacity(0.1).ignoresSafeArea())
+            if journalVM.preview {
                 PictureFullScreenView(
-                    journalEntry: journalEntry, currentIndex: $currentIndex,
-                    selectedImageIndex: $selectedImageIndex, preview: $preview,
-                    swipeOffset: $swipeOffset)
+                    journalEntry: journalVM.journalEntry, currentIndex: $journalVM.currentIndex,
+                    selectedImageIndex: $journalVM.selectedImageIndex, preview: $journalVM.preview,
+                    swipeOffset: $journalVM.swipeOffset)
             }
         }
     }
