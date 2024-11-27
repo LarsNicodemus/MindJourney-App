@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SettingsView: View {
     @EnvironmentObject var loginVM: AuthViewModel
-    @StateObject private var notificationViewModel: NotificationViewModel = NotificationViewModel()
+    @StateObject private var settingsViewModel: SettingsViewModel = SettingsViewModel()
 
     var body: some View {
         VStack{
@@ -26,24 +26,24 @@ struct SettingsView: View {
             .padding()
             Text("Sollen wir Sie regelmäßig daran erinnern, ein Eintrag ins Tagebuch zu machen?")
                 .frame(width: 200)
-            Toggle(isOn: notificationViewModel.$authorizationForSendingNotifications) {
-                Text(notificationViewModel.authorizationForSendingNotifications ? "Freigabe erteilt" : "Freigabe erteilen")
-            }.onChange(of: notificationViewModel.authorizationForSendingNotifications) {
-                if notificationViewModel.authorizationForSendingNotifications {
-                    notificationViewModel.requestAuthorization()
+            Toggle(isOn: settingsViewModel.$authorizationForSendingNotifications) {
+                Text(settingsViewModel.authorizationForSendingNotifications ? "Freigabe erteilt" : "Freigabe erteilen")
+            }.onChange(of: settingsViewModel.authorizationForSendingNotifications) {
+                if settingsViewModel.authorizationForSendingNotifications {
+                    settingsViewModel.requestAuthorization()
                 } else {
-                    notificationViewModel.removeAllNotifications()
+                    settingsViewModel.removeAllNotifications()
                 }
                 
             }
-            if (notificationViewModel.authorizationForSendingNotifications == true) {
+            if (settingsViewModel.authorizationForSendingNotifications == true) {
                 DatePicker(
                     "Zur welchen Uhrzeit sollen wir Sie erinnern?",
-                    selection: notificationViewModel.$selection,
+                    selection: settingsViewModel.$selection,
                     displayedComponents: .hourAndMinute
-                ).onChange(of: notificationViewModel.selection) {
-                    let (hour, minute) = notificationViewModel.extractHourAndMinute(from: notificationViewModel.selection)
-                    notificationViewModel
+                ).onChange(of: settingsViewModel.selection) {
+                    let (hour, minute) = settingsViewModel.extractHourAndMinute(from: settingsViewModel.selection)
+                    settingsViewModel
                         .sendDailyNotificationOnTime(
                             title: "Tägliche Erinnerung!",
                             message: "Erzähle mir: Wie war dein Tag?",

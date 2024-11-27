@@ -1,5 +1,5 @@
 //
-//  NotificationViewModel.swift
+//  SettingsViewModel.swift
 //  MindJourney_Projektwoche2
 //
 //  Created by Muhammet Incirkus on 27.11.24.
@@ -8,7 +8,7 @@
 import UserNotifications
 import SwiftUI
 
-class NotificationViewModel: ObservableObject {
+class SettingsViewModel: ObservableObject {
     
     @AppStorage("selection") var selection: Date = Date()
     @AppStorage("authorizationForSendingNotifications") var authorizationForSendingNotifications: Bool = false
