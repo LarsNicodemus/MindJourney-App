@@ -33,8 +33,6 @@ struct ColorPickView: View {
               }
               CircleView(isCircleVisible: $isCircleVisible, startLocation: $startLocation, location: $location, diameter: diameter, radius: radius, bgColor: $bgColor)
           }
-          .frame(maxWidth: .infinity, maxHeight: .infinity)
-          .background(isCircleVisible ? bgColor : Color.clear)
           .gesture(colorPickerDragGesture(
               startLocation: $startLocation,
               location: $location,

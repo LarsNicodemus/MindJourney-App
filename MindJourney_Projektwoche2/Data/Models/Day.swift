@@ -6,15 +6,43 @@
 //
 
 import SwiftUI
+import SwiftData
 
-struct Day {
+@Model
+class Day:Identifiable {
+    
+    var id: UUID = UUID()
     var text: String
     var date: Date
     var mood: Mood
-    var pictures: [UIImage]
+    var pictures: [String]
     var audios: [String]
     var tags: [String]
-    var weather: Weather
-    var colors: [UIColor]
+    var weather: Weather?
+    var colors: [String]
     var goal: Bool
+    
+    init(
+        id: UUID = UUID(),
+        text: String,
+        date: Date,
+        mood: Mood,
+        pictures: [String],
+        audios: [String],
+        tags: [String],
+        weather: Weather?,
+        colors: [String],
+        goal: Bool
+    ) {
+        self.id = id
+        self.text = text
+        self.date = date
+        self.mood = mood
+        self.pictures = pictures
+        self.audios = audios
+        self.tags = tags
+        self.weather = weather
+        self.colors = colors
+        self.goal = goal
+    }
 }
