@@ -8,8 +8,18 @@
 import SwiftUI
 
 struct SettingsView: View {
+    @EnvironmentObject var loginVM: AuthViewModel
     var body: some View {
-        Text("Settings")
+        Button(action: {
+            loginVM.logout()
+        }) {
+            Text("Logout")
+                .frame(maxWidth: .infinity)
+                .padding()
+                .background(Color.blue)
+                .foregroundColor(.white)
+                .cornerRadius(10)
+        }
     }
 }
 

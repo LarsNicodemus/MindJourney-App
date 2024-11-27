@@ -6,6 +6,12 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		291F97F22CF4B50E00EC07A1 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 291F97F12CF4B50E00EC07A1 /* FirebaseAuth */; };
+		291F97F42CF4B51500EC07A1 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 291F97F32CF4B51500EC07A1 /* FirebaseDatabase */; };
+		291F97F82CF4B53300EC07A1 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 291F97F72CF4B53300EC07A1 /* FirebaseFirestore */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		D3E0A5B82CF47CF400530002 /* MindJourney_Projektwoche2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MindJourney_Projektwoche2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -36,16 +42,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				291F97F42CF4B51500EC07A1 /* FirebaseDatabase in Frameworks */,
+				291F97F82CF4B53300EC07A1 /* FirebaseFirestore in Frameworks */,
+				291F97F22CF4B50E00EC07A1 /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		291F97F02CF4B50D00EC07A1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D3E0A5AF2CF47CF400530002 = {
 			isa = PBXGroup;
 			children = (
 				D3E0A5BA2CF47CF400530002 /* MindJourney_Projektwoche2 */,
+				291F97F02CF4B50D00EC07A1 /* Frameworks */,
 				D3E0A5B92CF47CF400530002 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -78,6 +95,9 @@
 			);
 			name = MindJourney_Projektwoche2;
 			packageProductDependencies = (
+				291F97F12CF4B50E00EC07A1 /* FirebaseAuth */,
+				291F97F32CF4B51500EC07A1 /* FirebaseDatabase */,
+				291F97F72CF4B53300EC07A1 /* FirebaseFirestore */,
 			);
 			productName = MindJourney_Projektwoche2;
 			productReference = D3E0A5B82CF47CF400530002 /* MindJourney_Projektwoche2.app */;
@@ -107,6 +127,9 @@
 			);
 			mainGroup = D3E0A5AF2CF47CF400530002;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				291F97EF2CF4B4C800EC07A1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = D3E0A5B92CF47CF400530002 /* Products */;
 			projectDirPath = "";
@@ -265,7 +288,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MindJourney_Projektwoche2/Preview Content\"";
-				DEVELOPMENT_TEAM = 9KWUTK4PE3;
+				DEVELOPMENT_TEAM = 6ND866D358;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "MindJourney-Projektwoche2-Info.plist";
@@ -298,7 +321,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MindJourney_Projektwoche2/Preview Content\"";
-				DEVELOPMENT_TEAM = 9KWUTK4PE3;
+				DEVELOPMENT_TEAM = 6ND866D358;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "MindJourney-Projektwoche2-Info.plist";
@@ -345,6 +368,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		291F97EF2CF4B4C800EC07A1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.5.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		291F97F12CF4B50E00EC07A1 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 291F97EF2CF4B4C800EC07A1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		291F97F32CF4B51500EC07A1 /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 291F97EF2CF4B4C800EC07A1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		291F97F72CF4B53300EC07A1 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 291F97EF2CF4B4C800EC07A1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D3E0A5B02CF47CF400530002 /* Project object */;
 }
