@@ -13,10 +13,10 @@ var MOCKDAY = Day(
     date: Date(),
     mood: .calm,
     pictures: [],
+	audios: [],
     tags: ["guter Tag", "Wetter gut", "spaß am Coden", "gute Laune", "Frisur sitzt" , "Wetter gut", "spaß am Coden", "gute Laune", "Frisur sitzt", "Frisur sitzt" , "Wetter gut", "spaß am Coden", "gute Laune", "Frisur sitzt","guter Tag", "Wetter gut", "spaß am Coden", "gute Laune", "Frisur sitzt" , "Wetter gut", "spaß am Coden", "gute Laune", "Frisur sitzt", "Frisur sitzt" , "Wetter gut", "spaß am Coden", "gute Laune", "Frisur sitzt"],
-    audios: [],
     weather: Weather(temperatur: 12.1, beschreibung: "wolkig", datum: Date()),
-    colors: [.red],
+    colors: colorToHexString(.black),
     goal: false
 )
 

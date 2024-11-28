@@ -17,7 +17,7 @@ struct ColorPickView: View {
     @State private var startLocation: CGPoint?
     @State private var location: CGPoint?
     @State private var isCircleVisible: Bool = false
-    @State var bgColor: Color = .blue
+    @Binding var bgColor: Color
     
     var body: some View {
           ZStack {
@@ -33,8 +33,6 @@ struct ColorPickView: View {
               }
               CircleView(isCircleVisible: $isCircleVisible, startLocation: $startLocation, location: $location, diameter: diameter, radius: radius, bgColor: $bgColor)
           }
-          .frame(maxWidth: .infinity, maxHeight: .infinity)
-          .background(isCircleVisible ? bgColor : Color.clear)
           .gesture(colorPickerDragGesture(
               startLocation: $startLocation,
               location: $location,
@@ -45,6 +43,4 @@ struct ColorPickView: View {
       }
   }
 
-#Preview {
-    ColorPickView()
-}
+

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MoodSelectionView: View {
-    @State private var selectedMood: Mood = .happy
+    @Binding var selectedMood: Mood
 
     let columns = [
         GridItem(.flexible()),
@@ -39,5 +39,5 @@ struct MoodSelectionView: View {
 
 
 #Preview {
-    MoodSelectionView()
+    MoodSelectionView(selectedMood: .constant(.angry))
 }
