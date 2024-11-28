@@ -35,7 +35,7 @@ struct CreateView: View {
                 .buttonStyle(.borderedProminent)
             }
             .padding()
-        }
+        }.animatedBackground()
     }
 }
 
@@ -43,3 +43,4 @@ struct CreateView: View {
     CreateView()
         .modelContainer(for: Day.self, inMemory: true)
 }
+

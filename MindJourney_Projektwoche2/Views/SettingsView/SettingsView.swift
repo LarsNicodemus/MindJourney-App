@@ -52,7 +52,7 @@ struct SettingsView: View {
                         )
                 }
             }
-        }
+        }.animatedBackground()
     }
 }
 

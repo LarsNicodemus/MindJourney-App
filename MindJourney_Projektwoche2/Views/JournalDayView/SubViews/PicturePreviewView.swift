@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PicturePreviewView: View {
-    var images: [UIImage]
+    var images: [String]
     var onTapImage: (Int) -> Void
     @State private var imageLayouts: [ImageLayout]
 
@@ -19,7 +19,7 @@ struct PicturePreviewView: View {
         let rotation: Double
     }
 
-    init(images: [UIImage], onTapImage: @escaping (Int) -> Void) {
+    init(images: [String], onTapImage: @escaping (Int) -> Void) {
         self.images = images
         self.onTapImage = onTapImage
         _imageLayouts = State(initialValue: images.map { _ in
@@ -44,7 +44,8 @@ struct PicturePreviewView: View {
             }
             ForEach(images.indices, id: \.self) { index in
                 let layout = imageLayouts[index]
-                Image(uiImage: images[index])
+                //Image(uiImage: images[index])
+                Image(images[index])
                     .resizable()
                     .frame(width: layout.frame.width, height: layout.frame.height)
                     .cornerRadius(4)
