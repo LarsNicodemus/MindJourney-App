@@ -32,6 +32,7 @@ struct AppNavigationView: View {
                 }
             }
             .toolbar(.hidden)
+            
     }
 }
 
