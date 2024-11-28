@@ -5,12 +5,19 @@
 //  Created by Lars Nicodemus on 25.11.24.
 //
 import SwiftUI
+import SwiftData
 
-struct Weather {
+@Model
+class Weather {
     let temperatur: Double
     let descriprion: WeatherDescriprion
     let date: Date
     
+    init(temperatur: Double, descriprion: WeatherDescriprion, date: Date) {
+        self.temperatur = temperatur
+        self.descriprion = descriprion
+        self.date = date
+    }
     
     enum WeatherDescriprion: String, CaseIterable {
         case sunny = "Sonnig"
