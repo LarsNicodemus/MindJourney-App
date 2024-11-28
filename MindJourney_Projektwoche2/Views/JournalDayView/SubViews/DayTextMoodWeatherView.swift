@@ -11,6 +11,7 @@ struct DayTextMoodWeatherView: View {
     var journalEntry: Day
     @Binding var showFullText: Bool
     @Binding var weatherEmoji: WeatherEmoji
+    
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
@@ -18,7 +19,7 @@ struct DayTextMoodWeatherView: View {
                     .font(.system(size: 18, weight: .semibold))
                 Spacer()
                 RoundedRectangle(cornerRadius: 10)
-                    .fill(journalEntry.colors.first ?? Color.clear)
+                    .fill(Color(hex: journalEntry.colors))
                     .stroke(.black, lineWidth: 0.5)
                     .frame(width: 30, height: 30)
                     .padding(.trailing, 8)
@@ -30,6 +31,7 @@ struct DayTextMoodWeatherView: View {
                     .padding(.trailing, 8)
             }
             .padding(.bottom, 2)
+            
             Text(journalEntry.text)
                 .frame(maxHeight: showFullText ? .infinity : 200)
                 .onTapGesture {

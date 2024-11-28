@@ -24,7 +24,8 @@ struct PictureFullScreenView: View {
                     }
                 }
             
-            Image(uiImage: journalEntry.pictures[selectedImageIndex])
+            //Image(uiImage: journalEntry.pictures[selectedImageIndex])
+            Image(journalEntry.pictures[selectedImageIndex])
                 .resizable()
                 .scaledToFit()
                 .clipShape(RoundedRectangle(cornerRadius: 10))

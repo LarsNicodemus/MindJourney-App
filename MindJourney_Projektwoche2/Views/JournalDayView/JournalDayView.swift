@@ -57,8 +57,7 @@ struct JournalDayView: View {
                 }
                 .padding()
             }
-            .background(
-                journalVM.journalEntry.colors.first.opacity(0.1).ignoresSafeArea())
+            .background(Color(hex: journalVM.journalEntry.colors).opacity(0.1).ignoresSafeArea())
             if journalVM.preview {
                 PictureFullScreenView(
                     journalEntry: journalVM.journalEntry, currentIndex: $journalVM.currentIndex,
