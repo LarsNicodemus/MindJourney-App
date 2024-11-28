@@ -46,3 +46,6 @@ class Day:Identifiable {
         self.goal = goal
     }
 }
+
+
+
