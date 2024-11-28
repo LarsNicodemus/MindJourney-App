@@ -53,7 +53,7 @@ class WeatherViewModel: ObservableObject {
             description = .sunny
         }
         
-        let currentWeather = Weather(temperatur: currentTemp, weatherDescription: description.rawValue, date: Date())
+        let currentWeather = Weather(temperatur: currentTemp, weatherDescription: description , date: Date())
         return currentWeather
     }
     

@@ -36,7 +36,7 @@ struct WeatherView: View {
                             .font(.caption)
                         }
                         HStack {
-                            Text(weather!.weatherDescription)
+                            Text(weather!.weatherDescription.rawValue)
                             Text(String(format: "%.2f °C", weather!.temperatur))
                         }
                         
