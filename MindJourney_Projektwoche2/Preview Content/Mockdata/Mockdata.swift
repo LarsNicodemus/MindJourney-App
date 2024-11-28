@@ -15,8 +15,7 @@ var MOCKDAY = Day(
     pictures: [],
 	audios: [],
     tags: ["guter Tag", "Wetter gut", "spaß am Coden", "gute Laune", "Frisur sitzt" , "Wetter gut", "spaß am Coden", "gute Laune", "Frisur sitzt", "Frisur sitzt" , "Wetter gut", "spaß am Coden", "gute Laune", "Frisur sitzt","guter Tag", "Wetter gut", "spaß am Coden", "gute Laune", "Frisur sitzt" , "Wetter gut", "spaß am Coden", "gute Laune", "Frisur sitzt", "Frisur sitzt" , "Wetter gut", "spaß am Coden", "gute Laune", "Frisur sitzt"],
-    audios: [],
-    weather: Weather(temperatur: 12.1, descriprion: .snowy, date: Date()),
+    weather: Weather(temperatur: 12.1, weatherDescription: "Sonnig", date: Date()),
     colors: colorToHexString(.black),
     goal: false
 )
@@ -30,7 +29,7 @@ var MOCKDAYS = [
             pictures: [],
             audios: [],
             tags: ["Arbeit", "Stress", "Meeting"],
-            weather: Weather(temperatur: 10.5, beschreibung: "bewölkt", datum: Date()),
+            weather: Weather(temperatur: 10.5, weatherDescription: "Sonnig" , date: Date()),
             colors: colorToHexString(.red),
             goal: false
         ),
@@ -41,7 +40,7 @@ var MOCKDAYS = [
             pictures: [],
             audios: [],
             tags: ["Lesen", "Entspannung", "Tee"],
-            weather: Weather(temperatur: 8.0, beschreibung: "regnerisch", datum: Date()),
+            weather: Weather(temperatur: 8.0, weatherDescription: "Regen" , date: Date()),
             colors: colorToHexString(.blue),
             goal: true
         ),
@@ -52,7 +51,7 @@ var MOCKDAYS = [
             pictures: [],
             audios: [],
             tags: ["Sport", "Training", "Fitness"],
-            weather: Weather(temperatur: 12.0, beschreibung: "klar", datum: Date()),
+            weather: Weather(temperatur: 12.0, weatherDescription: "Regen", date: Date()),
             colors: colorToHexString(.green),
             goal: true
         ),
@@ -63,7 +62,7 @@ var MOCKDAYS = [
             pictures: [],
             audios: [],
             tags: ["Sport", "Training", "Fitness"],
-            weather: Weather(temperatur: 12.0, beschreibung: "klar", datum: Date()),
+            weather: Weather(temperatur: 12.0, weatherDescription: "Regen" , date: Date()),
             colors: colorToHexString(.green),
             goal: true
         ),
@@ -74,7 +73,7 @@ var MOCKDAYS = [
             pictures: [],
             audios: [],
             tags: ["Kreativität", "Ideen", "Nachdenken"],
-            weather: Weather(temperatur: 14.0, beschreibung: "teils bewölkt", datum: Date()),
+            weather: Weather(temperatur: 14.0, weatherDescription: "Regen" , date: Date()),
             colors: colorToHexString(.gray),
             goal: true
         ),
@@ -85,7 +84,7 @@ var MOCKDAYS = [
             pictures: [],
             audios: [],
             tags: ["Frust", "Stress", "Missverständnis"],
-            weather: Weather(temperatur: 16.0, beschreibung: "wolkig", datum: Date()),
+            weather: Weather(temperatur: 16.0, weatherDescription: "Regen" , date: Date()),
             colors: colorToHexString(.red),
             goal: false
         ),
@@ -96,7 +95,7 @@ var MOCKDAYS = [
             pictures: [],
             audios: [],
             tags: ["Produktivität", "Arbeit", "Zufriedenheit"],
-            weather: Weather(temperatur: 20.0, beschreibung: "klar", datum: Date()),
+            weather: Weather(temperatur: 20.0, weatherDescription: "Schnee" , date: Date()),
             colors: colorToHexString(.orange),
             goal: true
         ),
@@ -107,7 +106,7 @@ var MOCKDAYS = [
             pictures: [],
             audios: [],
             tags: ["Traurig", "Enttäuscht", "Gedanken"],
-            weather: Weather(temperatur: 5.0, beschreibung: "regnerisch", datum: Date()),
+            weather: Weather(temperatur: 5.0, weatherDescription: "Schnee", date: Date()),
             colors: colorToHexString(.blue),
             goal: false
         ),
@@ -118,7 +117,7 @@ var MOCKDAYS = [
             pictures: [],
             audios: [],
             tags: ["Glück", "Euphorie", "Erfolg"],
-            weather: Weather(temperatur: 22.0, beschreibung: "sonnig", datum: Date()),
+            weather: Weather(temperatur: 22.0, weatherDescription: "Schnee" , date: Date()),
             colors: colorToHexString(.darkGray),
             goal: true
         )

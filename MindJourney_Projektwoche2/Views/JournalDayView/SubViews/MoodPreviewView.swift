@@ -32,7 +32,7 @@ struct MoodPreviewView: View {
         .frame(maxWidth: .infinity, maxHeight: 50)
         .padding(.horizontal)
         .padding(.vertical, 8)
-        .background(jEN.colors.first.opacity(0.5))
+        .background(Color(hex: jEN.colors))
         .cornerRadius(10)
     }
 }

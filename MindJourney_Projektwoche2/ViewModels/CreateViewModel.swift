@@ -40,7 +40,7 @@ class CreateViewModel: ObservableObject {
         print("Day: Emoji: " + day.mood.emoji)
         print("Day: PicturePath: \(day.pictures)")
         print("Day: Tags: " + day.tags.description)
-        print("Day: Wetter: " + (day.weather?.beschreibung ?? ""))
+        print("Day: Wetter: " + (day.weather?.weatherDescription ?? ""))
         print("Day: Farbe: " + day.colors)
         print("Day: Ziele: " + day.goal.description)
         

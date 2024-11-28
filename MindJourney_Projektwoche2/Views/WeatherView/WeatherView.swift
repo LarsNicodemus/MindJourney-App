@@ -36,14 +36,14 @@ struct WeatherView: View {
                             .font(.caption)
                         }
                         HStack {
-                            Text(weather!.descriprion.rawValue)
+                            Text(weather!.weatherDescription)
                             Text(String(format: "%.2f °C", weather!.temperatur))
                         }
                         
                     }
                     Spacer()
-                    GifImageView(weather!.descriprion.gif)
-                        .frame(width: 100, height: 100)
+//                    GifImageView(weather!.weatherDescription.gif)
+//                        .frame(width: 100, height: 100)
                 }
             } else {
                 LocationRequestView()

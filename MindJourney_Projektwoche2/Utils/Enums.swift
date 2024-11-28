@@ -42,3 +42,25 @@ enum WeatherEmoji: String, CaseIterable {
         }
     }
 }
+
+
+enum WeatherDescription: String, CaseIterable {
+    case sunny = "Sonnig"
+    case rainy = "Regen"
+    case snowy = "Schnee"
+    
+    var id: String {
+        return self.rawValue.capitalized
+    }
+    
+    var gif: String {
+        switch self {
+        case .sunny:
+            return "sunny"
+        case .rainy:
+            return "rainy"
+        case .snowy:
+            return "snowy"
+        }
+    }
+}
