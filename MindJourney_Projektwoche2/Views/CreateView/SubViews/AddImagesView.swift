@@ -10,7 +10,7 @@ import SwiftUI
 
 struct AddImagesView: View {
 
-    @State var selectedImages = [UIImage]()
+    @Binding var selectedImages: [UIImage]
     @State var selectedItems = [PhotosPickerItem]()
 
     var body: some View {
@@ -42,7 +42,8 @@ struct AddImagesView: View {
             }
             Spacer()
         }
-        .onChange(of: selectedItems) { newValues, oldValues in
+        .onChange(of: selectedItems) { oldValues, newValues in
+            print("Ausgewählte Bilder: \(newValues.debugDescription)")
             Task {
                 selectedImages = []
                 for value in newValues {
@@ -66,6 +67,4 @@ struct AddImagesView: View {
     }
 }
 
-#Preview {
-    AddImagesView()
-}
+

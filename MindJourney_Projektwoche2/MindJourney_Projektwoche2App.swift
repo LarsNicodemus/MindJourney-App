@@ -22,6 +22,7 @@ struct MindJourney_Projektwoche2App: App {
 
             LoginView()
                 .environmentObject(loginVM)
+                .modelContainer(for: [Day.self])
           
         }
     }
