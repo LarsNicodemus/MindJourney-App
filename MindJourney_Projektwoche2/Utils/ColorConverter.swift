@@ -34,4 +34,10 @@ func hexStringToColor(_ hex: String) -> UIColor? {
     let blue = CGFloat(rgb & 0x0000FF) / 255.0
     
     return UIColor(red: red, green: green, blue: blue, alpha: 1.0)
+} 
+
+func colorToUiColor(_ color: Color) -> String  {
+    let uiColor = UIColor(color)
+    return colorToHexString(uiColor)
+    
 }

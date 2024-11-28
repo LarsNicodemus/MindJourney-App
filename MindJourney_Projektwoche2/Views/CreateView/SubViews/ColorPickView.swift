@@ -17,7 +17,7 @@ struct ColorPickView: View {
     @State private var startLocation: CGPoint?
     @State private var location: CGPoint?
     @State private var isCircleVisible: Bool = false
-    @State var bgColor: Color = .blue
+    @Binding var bgColor: Color
     
     var body: some View {
           ZStack {
@@ -43,6 +43,4 @@ struct ColorPickView: View {
       }
   }
 
-#Preview {
-    ColorPickView()
-}
+

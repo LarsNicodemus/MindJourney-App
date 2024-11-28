@@ -16,16 +16,16 @@ struct CreateView: View {
         ScrollView {
             VStack {
                 
-                MoodSelectionView()
+                MoodSelectionView(selectedMood: $createVM.mood)
                 
                 
                 TextInputSubView(createVM: createVM)
                 
                 
-                AddImagesView()
+                AddImagesView(selectedImages: $createVM.selectedImages)
                 
                 
-                ColorPickView()
+                ColorPickView(bgColor: $createVM.colors)
                 
                 
                 Button("Speichern") {

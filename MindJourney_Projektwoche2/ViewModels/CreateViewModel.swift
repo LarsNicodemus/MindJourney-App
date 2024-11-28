@@ -14,14 +14,14 @@ class CreateViewModel: ObservableObject {
     @Published var mood: Mood = .happy
     @Published var tags: [String] = []
     @Published var weather: Weather?
-    @Published var colors: [UIColor] = []
+    @Published var colors: Color = .blue
     @Published var goal: Bool = false
     
     
     func saveDay(context: ModelContext) {
         let picturePaths = saveImages(selectedImages)
-        print(picturePaths.debugDescription)
-        let colorHexStrings = colors.map { colorToHexString($0) }
+        print("Gespeicherte Bildpfade: \(picturePaths)")
+        let colorHexStrings = colorToUiColor(colors) 
         print(colorHexStrings.debugDescription)
         let day = Day(
             text: input,
@@ -36,6 +36,11 @@ class CreateViewModel: ObservableObject {
         )
         print(day.id.debugDescription)
         print(day.text)
+        print(day.mood.emoji)
+        print(day.pictures)
+        print("Farbe:\(day.colors.debugDescription)")
+
+        if let firstPicture = day.pictures.first { print("Erstes Bild: \(firstPicture)") } else { print("Keine Bilder vorhanden") }
         context.insert(day)
         
         do {
@@ -48,7 +53,9 @@ class CreateViewModel: ObservableObject {
     private func saveImages(_ images: [UIImage]) -> [String] {
         var savedPaths: [String] = []
         
+        print("Images: \(images.debugDescription)")
         for image in images {
+            
             if let data = image.jpegData(compressionQuality: 0.8) {
                 let fileName = UUID().uuidString + ".jpg"
                 let fileURL = getDocumentsDirectory().appendingPathComponent(fileName)
@@ -56,6 +63,7 @@ class CreateViewModel: ObservableObject {
                 do {
                     try data.write(to: fileURL)
                     savedPaths.append(fileName)
+                    print(savedPaths)
                 } catch {
                     print("Fehler beim Speichern des Bildes: \(error.localizedDescription)")
                 }

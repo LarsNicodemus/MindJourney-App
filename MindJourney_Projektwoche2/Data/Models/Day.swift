@@ -19,7 +19,7 @@ class Day:Identifiable {
     var audios: [String]
     var tags: [String]
     var weather: Weather?
-    var colors: [String]
+    var colors: String
     var goal: Bool
     
     init(
@@ -31,7 +31,7 @@ class Day:Identifiable {
         audios: [String],
         tags: [String],
         weather: Weather?,
-        colors: [String],
+        colors: String,
         goal: Bool
     ) {
         self.id = id
