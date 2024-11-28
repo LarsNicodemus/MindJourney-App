@@ -34,17 +34,27 @@ class CreateViewModel: ObservableObject {
             colors: colorHexStrings,
             goal: goal
         )
-        print(day.id.debugDescription)
-        print(day.text)
-        print(day.mood.emoji)
-        print(day.pictures)
-        print("Farbe:\(day.colors.debugDescription)")
+        print("Day: Id: " + day.id.debugDescription)
+        print("Day: Text: " + day.text)
+        print("Day: Datum: " + day.date.description)
+        print("Day: Emoji: " + day.mood.emoji)
+        print("Day: PicturePath: \(day.pictures)")
+        print("Day: Tags: " + day.tags.description)
+        print("Day: Wetter: " + (day.weather?.beschreibung ?? ""))
+        print("Day: Farbe: " + day.colors)
+        print("Day: Ziele: " + day.goal.description)
+        
+        print("Day: \(day)" )
+        
+        
+        print("Day: Farbe: \(day.colors.debugDescription)")
 
         if let firstPicture = day.pictures.first { print("Erstes Bild: \(firstPicture)") } else { print("Keine Bilder vorhanden") }
         context.insert(day)
         
         do {
             try context.save()
+            print("Tag gespeichert")
         } catch {
             print("Fehler beim Speichern: \(error.localizedDescription)")
         }
