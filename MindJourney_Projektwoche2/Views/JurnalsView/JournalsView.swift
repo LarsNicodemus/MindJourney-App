@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import SwiftData
 
 struct JournalsView: View {
     @Query var journalEntries: [Day]

@@ -9,13 +9,40 @@ import SwiftData
 
 @Model
 class Weather {
-    var temperatur: Double
-    var beschreibung: String
-    var datum: Date
+    let temperatur: Double
+    let descriprion: WeatherDescriprion
+    let date: Date
     
-    init(temperatur: Double, beschreibung: String, datum: Date) {
+    init(temperatur: Double, descriprion: WeatherDescriprion, date: Date) {
         self.temperatur = temperatur
-        self.beschreibung = beschreibung
-        self.datum = datum
+        self.descriprion = descriprion
+        self.date = date
+    }
+    
+    init(temperatur: Double, descriprion: WeatherDescriprion, date: Date) {
+        self.temperatur = temperatur
+        self.descriprion = descriprion
+        self.date = date
+    }
+}
+enum WeatherDescriprion: String, CaseIterable {
+    case sunny = "Sonnig"
+    case rainy = "Regen"
+    case snowy = "Schnee"
+    
+    var id: String {
+        return self.rawValue.capitalized
+    }
+    
+    var gif: String {
+        switch self {
+        case .sunny:
+            return "sunny"
+        case .rainy:
+            return "rainy"
+        case .snowy:
+            return "snowy"
+            
+        }
     }
 }
