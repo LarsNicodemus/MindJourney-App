@@ -15,7 +15,7 @@ struct JournalsView: View {
 
         VStack{
             List(journalEntries) { entry in
-                Text(entry.id.uuidString)
+                DayListElementView(day: entry)
             }
             .overlay {
                 if journalEntries.isEmpty {

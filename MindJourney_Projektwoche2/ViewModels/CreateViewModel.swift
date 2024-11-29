@@ -68,11 +68,12 @@ class CreateViewModel: ObservableObject {
             
             if let data = image.jpegData(compressionQuality: 0.8) {
                 let fileName = UUID().uuidString + ".jpg"
+                print("ImageFilename: " + fileName)
                 let fileURL = getDocumentsDirectory().appendingPathComponent(fileName)
-                
+                print("ImageFileURL: \(fileURL)")
                 do {
                     try data.write(to: fileURL)
-                    savedPaths.append(fileName)
+                    savedPaths.append(fileURL.absoluteString)
                     print(savedPaths)
                 } catch {
                     print("Fehler beim Speichern des Bildes: \(error.localizedDescription)")
@@ -82,6 +83,14 @@ class CreateViewModel: ObservableObject {
         
         return savedPaths
     }
+    
+    func loadImage(from path: String) -> UIImage? {
+            guard let url = URL(string: path),
+                  let imageData = try? Data(contentsOf: url) else {
+                return nil
+            }
+            return UIImage(data: imageData)
+        }
     
     private func getDocumentsDirectory() -> URL {
         return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
