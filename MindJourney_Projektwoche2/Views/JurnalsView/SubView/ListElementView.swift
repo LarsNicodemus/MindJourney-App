@@ -9,11 +9,14 @@ import SwiftUI
 
 struct DayListElementView: View {
     @StateObject private var createVM: CreateViewModel = CreateViewModel()
+    var printData = true
     
     let day: Day
+    
     var body: some View {
         HStack{
             Text(day.mood.emoji)
+            
             VStack(alignment: .leading){
                 HStack {
                     Text(day.date, format: .dateTime.day().month().year())
@@ -21,28 +24,31 @@ struct DayListElementView: View {
                         Text("\(day.weather!.temperatur.description) °C")
                     }
                 }
-                Text(day.text).lineLimit(1).frame(width: 200)
+                Text(day.text).lineLimit(1)
             }
-//            if (!day.pictures.isEmpty || day.pictures.first != "") {
-//                if let uiimage = createVM.loadImage(from: day.pictures.first!) {
-//                    Image(uiImage: uiimage)
-//                        .resizable()
-//                        .scaledToFit()
-//                        .frame(width: 30, height: 30)
-//                }
-//                
-//            } else {
-//                Image(systemName: "photo")
-//                    .resizable()
-//                    .scaledToFit()
-//                    .frame(width: 30, height: 30)
-//            }
-            
+            Spacer()
+            if day.pictures != [] {
+                if let uiimage = createVM.loadImage(
+                    from: day.pictures[0]
+                ) {
+                    Image(uiImage: uiimage)
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 30, height: 30)
+                        .clipShape(.rect(cornerRadius: 3))
+                }
+            }
         }
         .padding()
-//        .frame(maxWidth: .infinity)
-        .background(hexStringToColor2(day.colors))
+        .background(.gray.mix(with: hexStringToColor2(day.colors)!, by: 0.3))
         .clipShape(.rect(cornerRadius: 5))
+
+//        Button{
+//            print("\(day.pictures)")
+//            print("\(day.picturesData)")
+//        } label: {
+//            Text("Data")
+//        }
     }
 }
 
@@ -63,49 +69,3 @@ struct DayListElementView: View {
         goal: false
     ))
 }
-
-
-/*
- var temperatur: Double
- var weatherDescription: WeatherDescription
- var date: Date
- 
- var id: UUID = UUID()
- var text: String
- var date: Date
- var mood: Mood
- var picturesData: Data
- var audiosData: Data
- var tagsData: Data
- var weather: Weather?
- var colors: String
- var goal: Bool
-
- var pictures: [String] {
-     get {
-         (try? JSONDecoder().decode([String].self, from: picturesData)) ?? []
-     }
-     set {
-         picturesData = (try? JSONEncoder().encode(newValue)) ?? Data()
-     }
- }
-
- var audios: [String] {
-     get {
-         (try? JSONDecoder().decode([String].self, from: audiosData)) ?? []
-     }
-     set {
-         audiosData = (try? JSONEncoder().encode(newValue)) ?? Data()
-     }
- }
-
- var tags: [String] {
-     get {
-         (try? JSONDecoder().decode([String].self, from: tagsData)) ?? []
-     }
-     set {
-         tagsData = (try? JSONEncoder().encode(newValue)) ?? Data()
-     }
- }
- 
- */

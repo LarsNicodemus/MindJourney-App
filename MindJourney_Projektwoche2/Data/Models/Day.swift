@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftData
 
 @Model
-class Day: Identifiable {
+class Day: Identifiable, Hashable {
     var id: UUID = UUID()
     var text: String
     var date: Date

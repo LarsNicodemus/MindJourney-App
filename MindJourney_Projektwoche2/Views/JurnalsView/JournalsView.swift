@@ -13,35 +13,41 @@ struct JournalsView: View {
     
     var body: some View {
 
-        VStack{
-            List(journalEntries) { entry in
-                DayListElementView(day: entry)
-            }
-            .overlay {
-                if journalEntries.isEmpty {
-                    
-                    ContentUnavailableView {
-                        Image(systemName: "book.pages")
-                            .font(.system(size: 120))
-                            .foregroundStyle(.gray)
-                            .padding(.bottom, 32)
-
-                    } description: {
-                        Text("Es sind noch keine Tagebucheinträge vorhanden")
-                    } actions: {
-                        Button("Starte mit deinem ersten Eintrag") {
-                            //
+        ScrollView {
+            LazyVStack{
+                ForEach(journalEntries) { entry in
+//                    NavigationLink(value: entry) {
+                        DayListElementView(day: entry)
+//                    }
+                }
+                .overlay {
+                    if journalEntries.isEmpty {
+                        
+                        ContentUnavailableView {
+                            Image(systemName: "book.pages")
+                                .font(.system(size: 120))
+                                .foregroundStyle(.gray)
+                                .padding(.bottom, 32)
+                            
+                        } description: {
+                            Text("Es sind noch keine Tagebucheinträge vorhanden")
+                        } actions: {
+                            Button("Starte mit deinem ersten Eintrag") {
+                                //
+                            }
                         }
                     }
                 }
-            }
-            .navigationTitle("Journal Entries")
-            //.animatedBackground()
-            .scrollContentBackground(.hidden)
+                .navigationTitle("Journal Entries")
+                .scrollContentBackground(.hidden)
+                
+                
+            }.background(.clear)
             
-            
-        }.background(.clear)
-            
+                
+        }
+        .padding(.horizontal)
+        .scrollIndicators(.hidden)
         .animatedBackground()
     }
 }

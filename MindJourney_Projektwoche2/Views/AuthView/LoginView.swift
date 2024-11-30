@@ -30,6 +30,9 @@ struct LoginView: View {
             .navigationDestination(isPresented: $loginVM.userIsLoggedIn) {
                 AppNavigationView()
             }
+//            .navigationDestination(for: Day.self) { day in
+//                JournalDayView()
+//            }
         }
     }
 }
