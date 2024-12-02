@@ -15,7 +15,7 @@ struct DayTextMoodWeatherView: View {
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
-                Text(journalEntry.date.formatted())
+                Text(journalEntry.date, format: .dateTime.day().month().year())
                     .font(.system(size: 18, weight: .semibold))
                 Spacer()
                 RoundedRectangle(cornerRadius: 10)
