@@ -5,9 +5,8 @@
 //  Created by Lars Nicodemus on 27.11.24.
 //
 
-import SwiftUI
 import CoreLocation
-
+import SwiftUI
 
 struct WeatherView: View {
     @ObservedObject var locationManager = LocationManager.shared
@@ -16,11 +15,12 @@ struct WeatherView: View {
     var body: some View {
 
         VStack {
-            
+
             if weather != nil {
                 HStack {
                     VStack(alignment: .leading) {
-                        TimelineView(.periodic(from: Date(), by: 1.0)) { context in
+                        TimelineView(.periodic(from: Date(), by: 1.0)) {
+                            context in
                             Text(
                                 Date.now.formatted(
                                     .dateTime
@@ -39,16 +39,17 @@ struct WeatherView: View {
                             Text(weather!.weatherDescription.rawValue)
                             Text(String(format: "%.2f °C", weather!.temperatur))
                         }
-                        
+
                     }
                     Spacer()
-//                    GifImageView(weather!.weatherDescription.gif)
-//                        .frame(width: 100, height: 100)
+                    GifImageView(weather!.weatherDescription.gif)
+                        .frame(width: 100, height: 100)
+                        
                 }
             } else {
                 LocationRequestView()
             }
-            
+
         }
         .frame(maxWidth: .infinity, maxHeight: 100)
         .onAppear {
@@ -56,13 +57,22 @@ struct WeatherView: View {
                 if locationManager.userLocation == nil {
                     LocationManager.shared.requestLocation()
                 } else if let location = locationManager.userLocation {
+
                     await weatherViewModel.fetchWeatherData(
                         latitude: location.coordinate.latitude,
                         longitude: location.coordinate.longitude
                     )
-                    weatherViewModel.currentWeather = weatherViewModel.fetchCurrentWeather()
-                    weather =  weatherViewModel.currentWeather
-                    
+
+                    print(
+                        "Latitude: \(location.coordinate.latitude), Longitude: \(location.coordinate.longitude)"
+                    )
+                    weatherViewModel.currentWeather =
+                        weatherViewModel.fetchCurrentWeather()
+                    print("Aktuelles Wetter VM: \(String(describing: weatherViewModel.currentWeather))")
+
+                    weather = weatherViewModel.currentWeather
+                    print("Aktuelles Wetter: \(String(describing: weather))")
+
                 }
             }
         }
@@ -73,20 +83,18 @@ struct WeatherView: View {
     WeatherView()
 }
 
-
-
 struct LocationRequestView: View {
     var body: some View {
-        VStack{
-            
-            Button{
+        VStack {
+
+            Button {
                 LocationManager.shared.requestLocation()
             } label: {
                 Image(systemName: "paperplane.circle.fill")
                 Text("Allow Location")
             }.buttonStyle(.borderedProminent)
         }
-        .onAppear{
+        .onAppear {
             print("Request Location from User")
         }
     }

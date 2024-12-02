@@ -12,7 +12,6 @@ struct JournalsView: View {
     @Query var journalEntries: [Day]
     
     var body: some View {
-
         NavigationView {
             ScrollView {
                 LazyVStack{
@@ -24,6 +23,7 @@ struct JournalsView: View {
                     }
                     .overlay {
                         if journalEntries.isEmpty {
+
                             
                             ContentUnavailableView {
                                 Image(systemName: "book.pages")

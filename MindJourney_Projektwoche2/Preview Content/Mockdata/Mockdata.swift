@@ -16,7 +16,7 @@ var MOCKDAY = Day(
 	audios: [],
     tags: ["guter Tag", "Wetter gut", "spaß am Coden", "gute Laune", "Frisur sitzt" , "Wetter gut", "spaß am Coden", "gute Laune", "Frisur sitzt", "Frisur sitzt" , "Wetter gut", "spaß am Coden", "gute Laune", "Frisur sitzt","guter Tag", "Wetter gut", "spaß am Coden", "gute Laune", "Frisur sitzt" , "Wetter gut", "spaß am Coden", "gute Laune", "Frisur sitzt", "Frisur sitzt" , "Wetter gut", "spaß am Coden", "gute Laune", "Frisur sitzt"],
     weather: Weather(temperatur: 12.1, weatherDescription: .rainy, date: Date()),
-    colors: colorToHexString(.black),
+    colors: colorToHexString(.blue),
     goal: false
 )
 
