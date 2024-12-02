@@ -22,7 +22,7 @@ struct CreateView: View {
     @State private var startLocation: CGPoint?
     @State private var location: CGPoint?
     @State private var isCircleVisible: Bool = false
-    @State var bgColor: Color = .blue
+    //@State var bgColor: Color = .blue
     
     var body: some View {
         ZStack {
@@ -64,7 +64,7 @@ struct CreateView: View {
                         .padding()
                     
                     
-                    ColorPickView(startLocation: $startLocation, location: $location, isCircleVisible: $isCircleVisible, bgColor: $bgColor)
+                    ColorPickView(startLocation: $startLocation, location: $location, isCircleVisible: $isCircleVisible, bgColor: $createVM.colors)
                         .padding()
                     
                     Button("Speichern") {
@@ -85,15 +85,15 @@ struct CreateView: View {
                     .scaledToFill()
                     .ignoresSafeArea()
             )
-            CircleView(isCircleVisible: $isCircleVisible, startLocation: $startLocation, location: $location, diameter: diameter, radius: radius, bgColor: $bgColor)
+            CircleView(isCircleVisible: $isCircleVisible, startLocation: $startLocation, location: $location, diameter: diameter, radius: radius, bgColor: $createVM.colors)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(isCircleVisible ? bgColor : Color.clear)
+        .background(isCircleVisible ? createVM.colors : Color.clear)
         .gesture(colorPickerDragGesture(
             startLocation: $startLocation,
             location: $location,
             isCircleVisible: $isCircleVisible,
-            bgColor: $bgColor,
+            bgColor: $createVM.colors,
             radius: radius
         ))
         
