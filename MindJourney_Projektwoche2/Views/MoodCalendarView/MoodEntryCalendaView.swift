@@ -9,7 +9,7 @@ struct MoodCalendarView: View {
 
     var body: some View {
         VStack {
-            Text("Mood Calendar")
+            Text("Stimmungskalender")
                 .font(.title)
                 .padding()
 
@@ -56,7 +56,9 @@ struct MoodCalendarView: View {
                         if let matchedDay = days.first(where: {
                             Calendar.current.isDate($0.date, inSameDayAs: date)
                         }) {
-                            MoodCellView(day: matchedDay)
+                            NavigationLink(destination: JournalDayView(day: matchedDay)){
+                                MoodCellView(day: matchedDay)
+                            }
                         } else {
                             PlaceholderDayCellView(date: date)
                         }

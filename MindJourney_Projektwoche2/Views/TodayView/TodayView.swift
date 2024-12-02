@@ -6,39 +6,87 @@
 //
 
 import SwiftUI
+import SwiftData
+
 
 struct TodayView: View {
+    @StateObject private var createVM: CreateViewModel = CreateViewModel()
+    @Query var journalEntries: [Day]
+    @State var selectedEntries: [Day] = []
+    var test = [MOCKDAY, MOCKDAY, MOCKDAY]
     var body: some View {
-        VStack{
-            HStack {
-                Spacer()
-                NavigationLink(destination: CreateView()) {
-                    HStack {
-                        Image(systemName: "plus")
-                            .font(.system(size: 20, weight: .bold))
-                        Text("Create")
-                            .font(.system(size: 18, weight: .bold, design: .rounded))
+        ScrollView{
+            WeatherView()
+                .padding(.horizontal)
+            
+            VStack{
+                HStack{
+                    Spacer()
+                    Button{
+                        selectedEntries = []
+                        if let firstEntry = journalEntries.first {
+                            if journalEntries.count == 1 {
+                                selectedEntries.append(firstEntry)
+                            } else {
+                                let numberOfEntries = min(3, journalEntries.count)
+                                let randomEntries = journalEntries.shuffled().prefix(numberOfEntries)
+                                selectedEntries.append(contentsOf: randomEntries)
+                            }
+                        }
+                    } label: {
+                        Image(systemName: "arrow.clockwise")
                     }
-                    .foregroundColor(.white)
-                    .padding()
-                    .background(
-                        RoundedRectangle(cornerRadius: 15)
-                            .fill(LinearGradient(
-                                gradient: Gradient(colors: [.blue,.purple]),
-                                startPoint: .topLeading,
-                                endPoint: .bottomTrailing
-                            ))
-                            .shadow(color: Color.purple.opacity(0.5), radius: 10, x: 5, y: 5)
-                    )
-                    .padding(.top)
                 }
+                .padding()
+
+                HStack{
+                    ForEach(selectedEntries, id: \.self){ entry in
+                        NavigationLink(destination: JournalDayView(day: entry)){
+                            TodayEntrieSubView(createVM: createVM, entry: entry)
+                        }
+                    }
+                }
+                .padding()
+                    .navigationTitle("Journal Entries")
             }
-            .padding()
+            
+            MoodCalendarView(days: journalEntries)
+            
+            
+
             Spacer()
         }.animatedBackground()
+            .scrollIndicators(.hidden)
+            .onAppear {
+                if selectedEntries.isEmpty {
+                    if let firstEntry = journalEntries.first {
+                        if journalEntries.count == 1 {
+                            selectedEntries.append(firstEntry)
+                        } else {
+                            let numberOfEntries = min(3, journalEntries.count)
+                            let randomEntries = journalEntries.shuffled().prefix(numberOfEntries)
+                            selectedEntries.append(contentsOf: randomEntries)
+                        }
+                    }
+                }
+            }
+//            .onChange(of: selectedEntries) { oldValue, newValue in
+//                    if let firstEntry = newValue.first {
+//                        if newValue.count == 1 {
+//                            selectedEntries.append(firstEntry)
+//                        } else {
+//                            let numberOfEntries = min(3, newValue.count)
+//                            let randomEntries = newValue.shuffled().prefix(numberOfEntries)
+//                            selectedEntries.append(contentsOf: randomEntries)
+//                        }
+//                    }
+//            }
+
     }
 }
 
 #Preview {
+    
     TodayView()
 }
+

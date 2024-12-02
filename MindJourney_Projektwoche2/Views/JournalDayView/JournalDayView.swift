@@ -10,6 +10,7 @@ import SwiftUI
 
 struct JournalDayView: View {
     @StateObject var journalVM: JournalEntryViewModel = JournalEntryViewModel()
+    let day: Day
     var body: some View {
 
         VStack {
@@ -72,6 +73,20 @@ struct JournalDayView: View {
 }
 
 #Preview {
-    JournalDayView()
+    JournalDayView(day: Day(
+        text: "Das ist ein Beispieltext, Das ist ein Beispieltext, Das ist ein Beispieltext, Das ist ein Beispieltext, Das ist ein Beispieltext, Das ist ein Beispieltext, Das ist ein Beispieltext, Das ist ein Beispieltext, ",
+        date: Date(),
+        mood: .euphoric,
+        pictures: ["", "", ""],
+        audios: ["", "", ""],
+        tags: ["tag1", "tag2", "tag3"],
+        weather: Weather(
+            temperatur: 15.7,
+            weatherDescription: .rainy,
+            date: Date()
+        ),
+        colors: "#D9DCAC",
+        goal: false
+    ))
 }
 

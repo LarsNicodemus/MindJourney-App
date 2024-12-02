@@ -14,7 +14,7 @@ struct MoodCellView: View {
         VStack {
             ZStack {
                 RoundedRectangle(cornerRadius: 12)
-                    .fill(day.mood.backgroundColor)
+                    .fill(.gray.mix(with: hexStringToColor2(day.colors)!, by: 0.3))
                     .frame(width: 40, height: 60)
                     .overlay {
                         VStack{

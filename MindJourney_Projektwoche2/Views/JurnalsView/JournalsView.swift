@@ -17,8 +17,13 @@ struct JournalsView: View {
             LazyVStack{
                 ForEach(journalEntries) { entry in
 //                    NavigationLink(value: entry) {
-                        DayListElementView(day: entry)
+//                        DayListElementView(day: entry)
 //                    }
+                    NavigationLink(destination: JournalDayView(day: entry)) {
+                        DayListElementView(day: entry)
+                    }
+//
+                    
                 }
                 .overlay {
                     if journalEntries.isEmpty {
