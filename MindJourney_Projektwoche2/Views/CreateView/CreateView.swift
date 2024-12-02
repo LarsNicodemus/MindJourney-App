@@ -78,13 +78,7 @@ struct CreateView: View {
                 }
                 .padding()
             }
-
-            .background(
-                Image("hintergrund")
-                    .resizable()
-                    .scaledToFill()
-                    .ignoresSafeArea()
-            )
+            .animatedBackground()
             CircleView(isCircleVisible: $isCircleVisible, startLocation: $startLocation, location: $location, diameter: diameter, radius: radius, bgColor: $createVM.colors)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
