@@ -35,7 +35,7 @@ struct TodayView: View {
             }
             .padding()
             Spacer()
-        }
+        }.animatedBackground()
     }
 }
 

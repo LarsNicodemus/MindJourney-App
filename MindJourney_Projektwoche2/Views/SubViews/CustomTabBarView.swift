@@ -21,7 +21,7 @@ struct CustomTabBarView: View {
                 } label: {
                     HStack(spacing: 5) {
                         Image(
-                            systemName: tab.rawValue
+                            systemName: activeTab == tab ? (tab.rawValue + ".fill") : tab.rawValue
                         )
                         .font(.title3)
                         .frame(width: 30, height: 30)
@@ -33,7 +33,7 @@ struct CustomTabBarView: View {
                                 .lineLimit(1)
                         }
                     }
-                    .foregroundStyle( activeTab == tab ? .white : .blue )
+                    .foregroundStyle( .white )
                     .padding(.vertical, 2)
                     .padding(.trailing, 15)
                     .padding(.leading, 10)
@@ -41,7 +41,7 @@ struct CustomTabBarView: View {
                     .background{
                         if activeTab == tab {
                             Capsule()
-                                .fill(.blue.gradient)
+                                .fill(.green.gradient)
                                 .onGeometryChange(for: CGRect.self, of: {
                                     $0.frame(in: .named("TABBARVIEW")) }, action: { newValue in
                                         tabLocation = newValue
@@ -57,8 +57,11 @@ struct CustomTabBarView: View {
         .padding(.horizontal,5)
         .frame(height: 45)
         .background(
-            .blue
-            .opacity(0.4).gradient
+            LinearGradient(
+                gradient: Gradient(colors: [.blue,.purple]),
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
             .shadow(.drop(color: .black.opacity(0.2), radius: 5, x: 5, y: 5))
             .shadow(.drop(color: .black.opacity(0.2), radius: 5, x: -5, y: -5)),
             in: .capsule

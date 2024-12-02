@@ -78,6 +78,7 @@ struct CreateView: View {
                 }
                 .padding()
             }
+
             .background(
                 Image("hintergrund")
                     .resizable()
@@ -103,3 +104,4 @@ struct CreateView: View {
     CreateView()
         .modelContainer(for: Day.self, inMemory: true)
 }
+

@@ -12,6 +12,7 @@ class WeatherViewModel: ObservableObject {
     @Published var weatherData: WeatherData?
     @Published var isLoading = false
     @Published var error: Error?
+    @Published var currentWeather: Weather?
     
     init(repository: WeatherRepository = RealWeatherRepository()) {
         self.repository = repository
@@ -35,6 +36,28 @@ class WeatherViewModel: ObservableObject {
         isLoading = false
     }
     
+    @MainActor
+    func fetchCurrentWeather() -> Weather? {
+        guard let weatherData = weatherData else {
+            return nil
+        }
+
+        let currentTemp = weatherData.current.temp
+        let description: WeatherDescription
+
+        if weatherData.current.snowfall > 0 {
+            description = .snowy
+        } else if weatherData.current.rain > 0 {
+            description = .rainy
+        } else {
+            description = .sunny
+        }
+        
+        let currentWeather = Weather(temperatur: currentTemp, weatherDescription: description , date: Date())
+        return currentWeather
+    }
+    
+    
     var today: DayWeather? {
         guard let weatherData = weatherData else { return nil }
         return DayWeather(
@@ -49,6 +72,7 @@ class WeatherViewModel: ObservableObject {
         )
     }
     
+    
     var tomorrow: DayWeather? {
         guard let weatherData = weatherData else { return nil }
         return DayWeather(
@@ -58,7 +82,7 @@ class WeatherViewModel: ObservableObject {
             sunrise: weatherData.daily.sunrise[1],
             sunset: weatherData.daily.sunset[1],
             rainSum: weatherData.daily.rainSum[1],
-            snowfallSum: weatherData.daily.snowfallSum[1],
+            snowfallSum: weatherData.daily.rainSum[1],
             precipitationProbability: weatherData.daily.precipitationProbabilityMax[1]
         )
     }
@@ -78,4 +102,5 @@ class WeatherViewModel: ObservableObject {
             )
         }
     }
+    
 }

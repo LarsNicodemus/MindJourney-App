@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct PicturePreviewView: View {
-    var images: [UIImage]
+    var images: [String]
     var onTapImage: (Int) -> Void
     @State private var imageLayouts: [ImageLayout]
+    @StateObject private var createVM: CreateViewModel = CreateViewModel()
 
     struct ImageLayout {
         let frame: (width: CGFloat, height: CGFloat)
@@ -19,7 +20,7 @@ struct PicturePreviewView: View {
         let rotation: Double
     }
 
-    init(images: [UIImage], onTapImage: @escaping (Int) -> Void) {
+    init(images: [String], onTapImage: @escaping (Int) -> Void) {
         self.images = images
         self.onTapImage = onTapImage
         _imageLayouts = State(initialValue: images.map { _ in
@@ -44,16 +45,31 @@ struct PicturePreviewView: View {
             }
             ForEach(images.indices, id: \.self) { index in
                 let layout = imageLayouts[index]
-                Image(uiImage: images[index])
-                    .resizable()
-                    .frame(width: layout.frame.width, height: layout.frame.height)
-                    .cornerRadius(4)
-                    .aspectRatio(contentMode: .fit)
-                    .rotationEffect(Angle(degrees: layout.rotation))
-                    .offset(x: layout.offsetX, y: layout.offsetY)
-                    .onTapGesture {
-                        onTapImage(index)
-                    }
+                //Image(uiImage: images[index])
+                if let uiimage = createVM.loadImage(
+                    from: images[index]
+                ){
+                    Image(uiImage: uiimage)
+                        .resizable()
+                        .frame(width: layout.frame.width, height: layout.frame.height)
+                        .cornerRadius(4)
+                        .aspectRatio(contentMode: .fit)
+                        .rotationEffect(Angle(degrees: layout.rotation))
+                        .offset(x: layout.offsetX, y: layout.offsetY)
+                        .onTapGesture {
+                            onTapImage(index)
+                        }
+                }
+//                Image(images[index])
+//                    .resizable()
+//                    .frame(width: layout.frame.width, height: layout.frame.height)
+//                    .cornerRadius(4)
+//                    .aspectRatio(contentMode: .fit)
+//                    .rotationEffect(Angle(degrees: layout.rotation))
+//                    .offset(x: layout.offsetX, y: layout.offsetY)
+//                    .onTapGesture {
+//                        onTapImage(index)
+//                    }
             }
         }
         .padding(32)

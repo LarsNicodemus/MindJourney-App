@@ -15,11 +15,113 @@ var MOCKDAY = Day(
     pictures: [],
 	audios: [],
     tags: ["guter Tag", "Wetter gut", "spaß am Coden", "gute Laune", "Frisur sitzt" , "Wetter gut", "spaß am Coden", "gute Laune", "Frisur sitzt", "Frisur sitzt" , "Wetter gut", "spaß am Coden", "gute Laune", "Frisur sitzt","guter Tag", "Wetter gut", "spaß am Coden", "gute Laune", "Frisur sitzt" , "Wetter gut", "spaß am Coden", "gute Laune", "Frisur sitzt", "Frisur sitzt" , "Wetter gut", "spaß am Coden", "gute Laune", "Frisur sitzt"],
-    weather: Weather(temperatur: 12.1, beschreibung: "wolkig", datum: Date()),
+    weather: Weather(temperatur: 12.1, weatherDescription: .rainy, date: Date()),
     colors: colorToHexString(.black),
     goal: false
 )
 
+
+var MOCKDAYS = [
+    Day(
+            text: "Ein hektischer Tag im Büro.",
+            date: Calendar.current.date(byAdding: .day, value: -1, to: Date())!,
+            mood: .stressed,
+            pictures: [],
+            audios: [],
+            tags: ["Arbeit", "Stress", "Meeting"],
+            weather: Weather(temperatur: 10.5, weatherDescription: .rainy , date: Date()),
+            colors: colorToHexString(.red),
+            goal: false
+        ),
+        Day(
+            text: "Ein ruhiger Abend mit einem guten Buch.",
+            date: Calendar.current.date(byAdding: .day, value: -2, to: Date())!,
+            mood: .calm,
+            pictures: [],
+            audios: [],
+            tags: ["Lesen", "Entspannung", "Tee"],
+            weather: Weather(temperatur: 8.0, weatherDescription: .rainy , date: Date()),
+            colors: colorToHexString(.blue),
+            goal: true
+        ),
+        Day(
+            text: "Ein sportlicher Tag im Fitnessstudio.",
+            date: Calendar.current.date(byAdding: .day, value: -3, to: Date())!,
+            mood: .motivated,
+            pictures: [],
+            audios: [],
+            tags: ["Sport", "Training", "Fitness"],
+            weather: Weather(temperatur: 12.0, weatherDescription: .rainy, date: Date()),
+            colors: colorToHexString(.green),
+            goal: true
+        ),
+    Day(
+            text: "Ein sportlicher Tag im Fitnessstudio, ich habe hart trainiert!",
+            date: Calendar.current.date(byAdding: .day, value: -3, to: Date())!,
+            mood: .motivated,
+            pictures: [],
+            audios: [],
+            tags: ["Sport", "Training", "Fitness"],
+            weather: Weather(temperatur: 12.0, weatherDescription: .rainy , date: Date()),
+            colors: colorToHexString(.green),
+            goal: true
+        ),
+        Day(
+            text: "Ein kreativer Tag, ich habe viele neue Ideen entwickelt.",
+            date: Calendar.current.date(byAdding: .day, value: -4, to: Date())!,
+            mood: .thoughtful,
+            pictures: [],
+            audios: [],
+            tags: ["Kreativität", "Ideen", "Nachdenken"],
+            weather: Weather(temperatur: 14.0, weatherDescription: .rainy , date: Date()),
+            colors: colorToHexString(.gray),
+            goal: true
+        ),
+        Day(
+            text: "Ein frustrierender Tag, alles ging schief.",
+            date: Calendar.current.date(byAdding: .day, value: -5, to: Date())!,
+            mood: .angry,
+            pictures: [],
+            audios: [],
+            tags: ["Frust", "Stress", "Missverständnis"],
+            weather: Weather(temperatur: 16.0, weatherDescription: .rainy , date: Date()),
+            colors: colorToHexString(.red),
+            goal: false
+        ),
+        Day(
+            text: "Ein sehr produktiver Tag, ich konnte viel abarbeiten.",
+            date: Calendar.current.date(byAdding: .day, value: -6, to: Date())!,
+            mood: .motivated,
+            pictures: [],
+            audios: [],
+            tags: ["Produktivität", "Arbeit", "Zufriedenheit"],
+            weather: Weather(temperatur: 20.0, weatherDescription: .rainy , date: Date()),
+            colors: colorToHexString(.orange),
+            goal: true
+        ),
+        Day(
+            text: "Ein trauriger Tag, ich habe mich über eine Nachricht geärgert.",
+            date: Calendar.current.date(byAdding: .day, value: -7, to: Date())!,
+            mood: .sad,
+            pictures: [],
+            audios: [],
+            tags: ["Traurig", "Enttäuscht", "Gedanken"],
+            weather: Weather(temperatur: 5.0, weatherDescription: .rainy, date: Date()),
+            colors: colorToHexString(.blue),
+            goal: false
+        ),
+        Day(
+            text: "Heute war ein richtig euphorischer Tag, alles ging einfach gut!",
+            date: Calendar.current.date(byAdding: .day, value: -8, to: Date())!,
+            mood: .euphoric,
+            pictures: [],
+            audios: [],
+            tags: ["Glück", "Euphorie", "Erfolg"],
+            weather: Weather(temperatur: 22.0, weatherDescription: .rainy, date: Date()),
+            colors: colorToHexString(.darkGray),
+            goal: true
+        )
+]
 
 
 var MOCKGOAL = Goal(
