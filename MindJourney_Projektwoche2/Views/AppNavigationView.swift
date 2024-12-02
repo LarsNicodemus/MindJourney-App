@@ -10,6 +10,7 @@ import SwiftUI
 struct AppNavigationView: View {
     
     @State var activeTab: TabModel = .today
+    @State var createIsVisible: Bool = false
     
     init() {
         UITabBar.appearance().isHidden = true
@@ -28,7 +29,9 @@ struct AppNavigationView: View {
                 }
                 VStack {
                     Spacer()
-                    CustomTabBarView(activeTab: $activeTab)
+                    CustomTabBarView(activeTab: $activeTab, createIsVisible: $createIsVisible)
+                }.sheet(isPresented: $createIsVisible) {
+                    CreateView().presentationDetents([.large])
                 }
             }
             .toolbar(.hidden)

@@ -10,6 +10,7 @@ import SwiftUI
 struct CustomTabBarView: View {
     
     @Binding var activeTab: TabModel
+    @Binding var createIsVisible: Bool
     @Namespace private var animation
     @State private var tabLocation: CGRect = .zero
     
@@ -17,7 +18,11 @@ struct CustomTabBarView: View {
         HStack(spacing: 0) {
             ForEach(TabModel.allCases, id: \.rawValue) { tab in
                 Button {
-                    activeTab = tab
+                    if tab == .create {
+                            createIsVisible = true
+                        } else {
+                            activeTab = tab
+                        }
                 } label: {
                     HStack(spacing: 5) {
                         Image(
@@ -32,6 +37,7 @@ struct CustomTabBarView: View {
                                 .fontWeight(.semibold)
                                 .lineLimit(1)
                         }
+                        
                     }
                     .foregroundStyle( .white )
                     .padding(.vertical, 2)
@@ -71,5 +77,5 @@ struct CustomTabBarView: View {
 }
 
 #Preview {
-    CustomTabBarView(activeTab: .constant(.today))
+    CustomTabBarView(activeTab: .constant(.today), createIsVisible: .constant(false))
 }
