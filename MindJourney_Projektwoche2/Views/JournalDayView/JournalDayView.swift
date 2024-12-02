@@ -11,7 +11,6 @@ import SwiftUI
 struct JournalDayView: View {
     @StateObject var journalVM: JournalEntryViewModel = JournalEntryViewModel()
     let day: Day
-    var day: Day
     var body: some View {
 
         VStack {
