@@ -1,8 +1,9 @@
-//
-//  JournalDayView.swift
-//  Journal
-//
-//  Created by Lars Nicodemus on 26.11.24.
+////
+////  JournalDayView.swift
+////  Journal
+////
+////  Created by Lars Nicodemus on 26.11.24.
+////
 //
 
 import SwiftUI
@@ -73,3 +74,4 @@ struct JournalDayView: View {
 #Preview {
     JournalDayView()
 }
+

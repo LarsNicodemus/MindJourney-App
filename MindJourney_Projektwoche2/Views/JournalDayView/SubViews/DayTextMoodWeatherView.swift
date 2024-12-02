@@ -1,9 +1,9 @@
-//
-//  DayTextMoodWeatherView.swift
-//  Test1
-//
-//  Created by Lars Nicodemus on 27.11.24.
-//
+////
+////  DayTextMoodWeatherView.swift
+////  Test1
+////
+////  Created by Lars Nicodemus on 27.11.24.
+
 
 import SwiftUI
 
@@ -58,3 +58,4 @@ struct DayTextMoodWeatherView: View {
         }
     }
 }
+

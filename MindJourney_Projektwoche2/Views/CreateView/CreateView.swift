@@ -9,33 +9,94 @@ import SwiftUI
 import SwiftData
 
 struct CreateView: View {
+    
     @StateObject private var createVM: CreateViewModel = CreateViewModel()
     @Environment(\.modelContext) private var context
     @Query var days: [Day]
+    
+    let radius: CGFloat = 150
+    var diameter: CGFloat {
+        radius * 2
+    }
+
+    @State private var startLocation: CGPoint?
+    @State private var location: CGPoint?
+    @State private var isCircleVisible: Bool = false
+    @State var bgColor: Color = .blue
+    
     var body: some View {
-        ScrollView {
-            VStack {
-                
-                MoodSelectionView(selectedMood: $createVM.mood)
-                
-                
-                TextInputSubView(createVM: createVM)
-                
-                
-                AddImagesView(selectedImages: $createVM.selectedImages)
-                
-                
-                ColorPickView(bgColor: $createVM.colors)
-                
-                
-                Button("Speichern") {
+        ZStack {
+            ScrollView {
+                VStack {
+                    Text("Neuen Eintrag erstellen")
+                        .font(.system(size: 30, weight: .bold, design: .rounded))
+                    MoodSelectionView(selectedMood: $createVM.mood)
+                        .background(
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 10)
+                                    .fill(
+                                        LinearGradient(
+                                            gradient: Gradient(colors: [
+                                                Color.blue.opacity(0.5),
+                                                Color.purple.opacity(0.5)
+                                            ]),
+                                            startPoint: .topLeading,
+                                            endPoint: .bottomTrailing
+                                        )
+                                    )
+                                    .shadow(color: Color.blue.opacity(0.4), radius: 10, x: 5, y: 5)
+                                    .shadow(color: Color.purple.opacity(0.4), radius: 10, x: -5, y: -5)
+                                
+                                RoundedRectangle(cornerRadius: 10)
+                                    .fill(Color.white)
+                                    .opacity(0.8)
+                                    .frame(width: 350, height: 142)
+                            }
+                                .padding()
+                        )
+                    VStack{
+                        Text("Erinnerung eintragen")
+                        TextInputSubView(createVM: createVM)
+                    }
+                    .padding()
                     
-                    createVM.saveDay(context: context)
+                    AddImagesView(selectedImages: $createVM.selectedImages)
+                        .padding()
+                    
+                    
+                    ColorPickView(startLocation: $startLocation, location: $location, isCircleVisible: $isCircleVisible, bgColor: $bgColor)
+                        .padding()
+                    
+                    Button("Speichern") {
+                        createVM.saveDay(context: context)
+                    }
+                    .buttonStyle(.borderedProminent)
+                    .padding()
+                    .frame(width: 350, height: 80)
+                    .font(.system(size: 24, weight: .bold, design: .rounded))
+                    
                 }
-                .buttonStyle(.borderedProminent)
+                .padding()
             }
-            .padding()
-        }.animatedBackground()
+
+            .background(
+                Image("hintergrund")
+                    .resizable()
+                    .scaledToFill()
+                    .ignoresSafeArea()
+            )
+            CircleView(isCircleVisible: $isCircleVisible, startLocation: $startLocation, location: $location, diameter: diameter, radius: radius, bgColor: $bgColor)
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(isCircleVisible ? bgColor : Color.clear)
+        .gesture(colorPickerDragGesture(
+            startLocation: $startLocation,
+            location: $location,
+            isCircleVisible: $isCircleVisible,
+            bgColor: $bgColor,
+            radius: radius
+        ))
+        
     }
 }
 

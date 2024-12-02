@@ -1,9 +1,10 @@
-//
-//  PictureFullScreenView.swift
-//  Test1
-//
-//  Created by Lars Nicodemus on 27.11.24.
-//
+////
+////  PictureFullScreenView.swift
+////  Test1
+////
+////  Created by Lars Nicodemus on 27.11.24.
+////
+
 
 import SwiftUI
 
@@ -69,4 +70,5 @@ struct PictureFullScreenView: View {
         }
     }
 }
+
 
