@@ -13,6 +13,7 @@ import Firebase
 @main
 struct MindJourney_Projektwoche2App: App {
     @StateObject private var loginVM: AuthViewModel = AuthViewModel()
+    @StateObject private var settingsViewModel = SettingsViewModel()
 
     init() {
         FirebaseApp.configure()
@@ -22,7 +23,9 @@ struct MindJourney_Projektwoche2App: App {
 
             LoginView()
                 .environmentObject(loginVM)
+                .environmentObject(settingsViewModel)
                 .modelContainer(for: [Day.self])
+                .environment(\.colorScheme, settingsViewModel.darkmode ? .dark : .light)
           
         }
     }

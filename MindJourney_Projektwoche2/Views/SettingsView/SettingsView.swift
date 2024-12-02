@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SettingsView: View {
     @EnvironmentObject var loginVM: AuthViewModel
-    @StateObject private var settingsViewModel: SettingsViewModel = SettingsViewModel()
+    @EnvironmentObject var settingsViewModel: SettingsViewModel
     @Environment(\.colorScheme) var colorScheme
 
     var body: some View {
@@ -68,6 +68,8 @@ struct SettingsView: View {
                 
             }
             .scrollContentBackground(.hidden)
+            
+            .scrollIndicators(.hidden)
             .background(.clear)
             
             
@@ -83,6 +85,7 @@ struct SettingsView: View {
                     .cornerRadius(10)
             }
             .padding()
+            .padding(.bottom, 100)
             Spacer()
             
         }.animatedBackground()

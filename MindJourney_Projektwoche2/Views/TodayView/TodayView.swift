@@ -70,6 +70,7 @@ struct TodayView: View {
                     }
                 }
             }
+            .contentMargins(.bottom, 100)
     }
 }
 

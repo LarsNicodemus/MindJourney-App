@@ -15,7 +15,7 @@ struct JournalsView: View {
         NavigationView {
             ScrollView {
                 LazyVStack{
-                    ForEach(journalEntries) { entry in
+                    ForEach(journalEntries.reversed()) { entry in
                         NavigationLink(destination: JournalDayView(day: entry)) {
                         DayListElementView(day: entry)
                                             }

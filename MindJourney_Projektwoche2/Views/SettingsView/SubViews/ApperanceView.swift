@@ -15,7 +15,7 @@ enum ThemeMode: String, CaseIterable {
 
 struct ApperanceView: View {
     
-    @StateObject private var settingsViewModel: SettingsViewModel = SettingsViewModel()
+    @EnvironmentObject var settingsViewModel: SettingsViewModel
     @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
