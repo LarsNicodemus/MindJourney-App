@@ -8,6 +8,8 @@ import SwiftUI
 import SwiftData
 
 class CreateViewModel: ObservableObject {
+    
+    @Query var journalEntries: [Day]
     @Published var input: String = ""
     @Published var textFieldHeight: CGFloat = 50
     @Published var selectedImages: [UIImage] = []
