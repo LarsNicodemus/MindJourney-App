@@ -90,7 +90,8 @@ struct CreateView: View {
                     
                 }
                 .padding()
-            }
+            }.contentMargins(.bottom, 100)
+                .scrollIndicators(.hidden)
             .animatedBackground()
             CircleView(isCircleVisible: $isCircleVisible, startLocation: $startLocation, location: $location, diameter: diameter, radius: radius, bgColor: $createVM.colors)
         }

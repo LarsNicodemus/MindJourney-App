@@ -49,6 +49,7 @@ struct JournalsView: View {
                 
             }
             .padding(.horizontal)
+            .contentMargins(.bottom, 100)
             .scrollIndicators(.hidden)
             .animatedBackground()
         }
