@@ -12,6 +12,7 @@ struct CreateView: View {
     
     @StateObject private var createVM: CreateViewModel = CreateViewModel()
     @Environment(\.modelContext) private var context
+    @Environment(\.dismiss) private var dismiss
     @Query var days: [Day]
     
     let radius: CGFloat = 150
@@ -67,8 +68,20 @@ struct CreateView: View {
                     ColorPickView(startLocation: $startLocation, location: $location, isCircleVisible: $isCircleVisible, bgColor: $createVM.colors)
                         .padding()
                     
+                    Button("Sprachmemo aufzeichnen"){
+                        createVM.recorder.toggle()
+                    }
+                    .sheet(isPresented: $createVM.recorder) {
+                        RecordView(createVM: createVM).presentationDetents([.medium])
+                    }
+                    .buttonStyle(.borderedProminent)
+                    .padding()
+                    .frame(width: 350, height: 80)
+                    .font(.system(size: 16, weight: .regular, design: .rounded))
+                    
                     Button("Speichern") {
                         createVM.saveDay(context: context)
+                        dismiss()
                     }
                     .buttonStyle(.borderedProminent)
                     .padding()
@@ -77,7 +90,8 @@ struct CreateView: View {
                     
                 }
                 .padding()
-            }
+            }.contentMargins(.bottom, 100)
+                .scrollIndicators(.hidden)
             .animatedBackground()
             CircleView(isCircleVisible: $isCircleVisible, startLocation: $startLocation, location: $location, diameter: diameter, radius: radius, bgColor: $createVM.colors)
         }

@@ -11,6 +11,7 @@ import SwiftUI
 struct JournalDayView: View {
     @StateObject var journalVM: JournalEntryViewModel = JournalEntryViewModel()
     let day: Day
+    var day: Day
     var body: some View {
 
         VStack {
@@ -18,9 +19,9 @@ struct JournalDayView: View {
                 ScrollView {
                     VStack(alignment: .leading) {
                         
-                        if !journalVM.journalEntry.pictures.isEmpty {
+                        if !day.pictures.isEmpty {
                             PicturePreviewView(
-                                images: journalVM.journalEntry.pictures,
+                                images: day.pictures,
                                 onTapImage: { index in
                                     journalVM.selectedImageIndex = index
                                     journalVM.preview = true
@@ -29,18 +30,18 @@ struct JournalDayView: View {
                             .frame(maxWidth: .infinity, maxHeight: 400)
                         }
                         DayTextMoodWeatherView(
-                            journalEntry: journalVM.journalEntry, showFullText: $journalVM.showFullText,
+                            journalEntry: day, showFullText: $journalVM.showFullText,
                             weatherEmoji: $journalVM.weatherEmoji)
                         
-                        if !journalVM.journalEntry.audios.isEmpty {
+                        if !day.audios.isEmpty {
                             AudioPlayView(
-                                jEN: journalVM.journalEntry,
-                                audio: journalVM.journalEntry.audios.first ?? "")
+                                jEN: day,
+                                audio: day.audios[0])
                         }
-                        if !journalVM.journalEntry.goal {
+                        if !day.goal {
                             GoalSubView(goalisChecked: $journalVM.goalChecked)
                         }
-                        if !journalVM.journalEntry.tags.isEmpty {
+                        if !day.tags.isEmpty {
                             HStack {
                                 HStack {
                                     Text("Tags:")
@@ -56,14 +57,14 @@ struct JournalDayView: View {
                             }
                         }
                         TagsSubView(
-                            journalEntry: journalVM.journalEntry, tagsVisible: $journalVM.tagsVisible)
+                            journalEntry: day, tagsVisible: $journalVM.tagsVisible)
                     }
                     .padding()
                 }
-                .background(Color(hex: journalVM.journalEntry.colors).opacity(0.1).ignoresSafeArea())
+                .background(Color(hex: day.colors).opacity(0.1).ignoresSafeArea())
                 if journalVM.preview {
                     PictureFullScreenView(
-                        journalEntry: journalVM.journalEntry, currentIndex: $journalVM.currentIndex,
+                        journalEntry: day, currentIndex: $journalVM.currentIndex,
                         selectedImageIndex: $journalVM.selectedImageIndex, preview: $journalVM.preview,
                         swipeOffset: $journalVM.swipeOffset)
                 }

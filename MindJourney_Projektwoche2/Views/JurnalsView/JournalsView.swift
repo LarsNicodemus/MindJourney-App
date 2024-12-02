@@ -12,48 +12,47 @@ struct JournalsView: View {
     @Query var journalEntries: [Day]
     
     var body: some View {
-
-        ScrollView {
-            LazyVStack{
-                ForEach(journalEntries) { entry in
-//                    NavigationLink(value: entry) {
-//                        DayListElementView(day: entry)
-//                    }
-                    NavigationLink(destination: JournalDayView(day: entry)) {
+        NavigationView {
+            ScrollView {
+                LazyVStack{
+                    ForEach(journalEntries) { entry in
+                        NavigationLink(destination: JournalDayView(day: entry)) {
                         DayListElementView(day: entry)
+                                            }
+                                       
                     }
-//
-                    
-                }
-                .overlay {
-                    if journalEntries.isEmpty {
-                        
-                        ContentUnavailableView {
-                            Image(systemName: "book.pages")
-                                .font(.system(size: 120))
-                                .foregroundStyle(.gray)
-                                .padding(.bottom, 32)
+                    .overlay {
+                        if journalEntries.isEmpty {
+
                             
-                        } description: {
-                            Text("Es sind noch keine Tagebucheinträge vorhanden")
-                        } actions: {
-                            Button("Starte mit deinem ersten Eintrag") {
-                                //
+                            ContentUnavailableView {
+                                Image(systemName: "book.pages")
+                                    .font(.system(size: 120))
+                                    .foregroundStyle(.gray)
+                                    .padding(.bottom, 32)
+                                
+                            } description: {
+                                Text("Es sind noch keine Tagebucheinträge vorhanden")
+                            } actions: {
+                                Button("Starte mit deinem ersten Eintrag") {
+                                    //
+                                }
                             }
                         }
                     }
-                }
-                .navigationTitle("Journal Entries")
-                .scrollContentBackground(.hidden)
+                    .navigationTitle("Journal Entries")
+                    .scrollContentBackground(.hidden)
+                    
+                    
+                }.background(.clear)
                 
                 
-            }.background(.clear)
-            
-                
+            }
+            .padding(.horizontal)
+            .contentMargins(.bottom, 100)
+            .scrollIndicators(.hidden)
+            .animatedBackground()
         }
-        .padding(.horizontal)
-        .scrollIndicators(.hidden)
-        .animatedBackground()
     }
 }
 

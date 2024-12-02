@@ -8,19 +8,21 @@
 import SwiftUI
 
 struct AudioPlayView: View {
+    
+    @StateObject private var recorder = RecorderViewModel()
     var jEN: Day
-    var audio:String = ""
+    var audio: String
     var audioTitle: String = "audiotitle123"
     var audioDate: String = "26.11.2024"
     var audioLength: String = "0:30"
-    @State var audioIsPlaying: Bool = true
+    @State var audioIsPlaying: Bool = false
     
     var body: some View {
         HStack{
             VStack(alignment: .leading){
-                Text(audioTitle)
+                Text("Aufzeichnung")
                     .font(.system(size: 20, weight: .bold))
-                Text(audioDate)
+                Text(jEN.date, format: .dateTime.day().month().year())
                     .font(.caption)
             }
             .padding(.trailing)
@@ -40,15 +42,21 @@ struct AudioPlayView: View {
                 .padding(.trailing)
                 .symbolEffect(.variableColor, isActive: audioIsPlaying)
             Spacer()
-            Text(audioLength)
+            Text("\(Int(recorder.playbackDuration))s")
                 .padding(.trailing)
 
             Button{
-                audioIsPlaying.toggle()
+//                audioIsPlaying.toggle()
+                
+                //recorder.path = recorder.loadAudio(from: audio)
+                recorder.playAudio()
             } label: {
                 Image(systemName: audioIsPlaying ? "pause.fill" : "play.fill")
             }
             .buttonStyle(.borderedProminent)
+            .onAppear{
+                recorder.path = recorder.loadAudio(from: audio)
+            }
         }
         .frame(maxWidth: .infinity)
         .padding(.horizontal)
@@ -65,5 +73,5 @@ struct AudioPlayView: View {
 }
 
 #Preview {
-    AudioPlayView(jEN: MOCKDAY)
+    AudioPlayView(jEN: MOCKDAY, audio: "")
 }

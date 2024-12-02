@@ -8,6 +8,8 @@ import SwiftUI
 import SwiftData
 
 class CreateViewModel: ObservableObject {
+    
+    @Query var journalEntries: [Day]
     @Published var input: String = ""
     @Published var textFieldHeight: CGFloat = 50
     @Published var selectedImages: [UIImage] = []
@@ -16,6 +18,8 @@ class CreateViewModel: ObservableObject {
     @Published var weather: Weather?
     @Published var colors: Color = .blue
     @Published var goal: Bool = false
+    @Published var recorder: Bool = false
+    @Published var recorderPath: String = ""
     
     
     func saveDay(context: ModelContext) {
@@ -23,12 +27,14 @@ class CreateViewModel: ObservableObject {
         print("Gespeicherte Bildpfade: \(picturePaths)")
         let colorHexStrings = colorToUiColor(colors) 
         print(colorHexStrings.debugDescription)
+        var audioPath: [String] = []
+        audioPath.append(recorderPath)
         let day = Day(
             text: input,
             date: Date(),
             mood: mood,
             pictures: picturePaths,
-            audios: [],
+            audios: audioPath,
             tags: tags,
             weather: weather,
             colors: colorHexStrings,
@@ -39,6 +45,7 @@ class CreateViewModel: ObservableObject {
         print("Day: Datum: " + day.date.description)
         print("Day: Emoji: " + day.mood.emoji)
         print("Day: PicturePath: \(day.pictures)")
+        print("Day: RecordingPath: \(day.audios)")
         print("Day: Tags: " + day.tags.description)
         print("Day: Wetter: " + (day.weather?.weatherDescription.rawValue ?? ""))
         print("Day: Farbe: " + day.colors)

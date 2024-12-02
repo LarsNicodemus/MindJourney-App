@@ -70,18 +70,6 @@ struct TodayView: View {
                     }
                 }
             }
-//            .onChange(of: selectedEntries) { oldValue, newValue in
-//                    if let firstEntry = newValue.first {
-//                        if newValue.count == 1 {
-//                            selectedEntries.append(firstEntry)
-//                        } else {
-//                            let numberOfEntries = min(3, newValue.count)
-//                            let randomEntries = newValue.shuffled().prefix(numberOfEntries)
-//                            selectedEntries.append(contentsOf: randomEntries)
-//                        }
-//                    }
-//            }
-
     }
 }
 
