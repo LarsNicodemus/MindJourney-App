@@ -44,3 +44,10 @@ enum WeatherEmoji: String, CaseIterable {
 }
 
 
+enum Theme: String, CaseIterable, Identifiable {
+    case light = "Hell"
+    case dark = "Dunkel"
+    //case system = "System"
+    
+    var id: String { rawValue }
+}

@@ -10,8 +10,12 @@ import SwiftUI
 
 class SettingsViewModel: ObservableObject {
     
+    //@Environment(\.colorScheme) var colorScheme
+    
     @AppStorage("selection") var selection: Date = Date()
     @AppStorage("authorizationForSendingNotifications") var authorizationForSendingNotifications: Bool = false
+    @Published var darkmode: Bool = false
+    @AppStorage("selectedTheme") var selectedTheme: Theme = .light
     
     func requestAuthorization() {
         UNUserNotificationCenter.current().requestAuthorization(
@@ -45,6 +49,26 @@ class SettingsViewModel: ObservableObject {
         UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
     }
 
+//    func selectTheme() {
+//        switch(selectedTheme) {
+//        case .light:
+//            darkmode = false
+//        case .dark:
+//            darkmode = true
+//        case .system:
+//            darkmode = colorScheme == .dark ? true : false
+//        }
+//    }
+    
+    func updateTheme(colorScheme: ColorScheme) {
+            switch selectedTheme {
+            case .light:
+                darkmode = false
+            case .dark:
+                darkmode = true
+//            case .system:
+//                darkmode = colorScheme == .dark
+            }
+        }
     
 }
-
