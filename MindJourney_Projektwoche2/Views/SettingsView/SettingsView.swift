@@ -14,6 +14,64 @@ struct SettingsView: View {
 
     var body: some View {
         VStack{
+            Text("Einstellungen")
+                .font(.system(size: 30, weight: .bold, design: .rounded))
+            Form {
+                Section(header: Text("General")
+                    .bold()
+                    .foregroundStyle(.black)
+                    .underline()
+                    .font(.callout)
+                ) {
+                    
+                    NavigationLink() {
+                        ApperanceView()
+                    } label: {
+                        Label("Appearance", systemImage: "lightswitch.on")
+                    }
+                    
+                    NavigationLink() {
+                        AccessNotifiView()
+                    } label: {
+                        Label("Accessibility & Notifications", systemImage: "switch.2")
+                    }
+                    
+                    
+                    
+                }
+                
+                Section(header: Text("Support")
+                    .bold()
+                    .foregroundStyle(.black)
+                    .underline()
+                    .font(.callout)
+                ) {
+                    
+                    NavigationLink() {
+                        ReportView()
+                    } label: {
+                        Label("Report an issue", systemImage: "exclamationmark.circle")
+                    }
+                    
+                    NavigationLink() {
+                        HStack {
+                            ScrollView{
+                                FAQView()
+                                    .padding()
+                            }
+                        }
+                    } label: {
+                        Label("FAQ", systemImage: "questionmark.circle")
+                    }
+                    
+                }
+                
+            }
+            .scrollContentBackground(.hidden)
+            .background(.clear)
+            
+            
+            
             Button(action: {
                 loginVM.logout()
             }) {
@@ -25,47 +83,8 @@ struct SettingsView: View {
                     .cornerRadius(10)
             }
             .padding()
+            Spacer()
             
-            Picker("", selection: $settingsViewModel.selectedTheme) {
-                ForEach(Theme.allCases) { them in
-                    Text(them.rawValue).tag(them)
-                }
-            }.pickerStyle(.segmented)
-                .onChange(of: settingsViewModel.selectedTheme) { _ in
-                            settingsViewModel.updateTheme(colorScheme: colorScheme)
-                        }
-                        .onAppear {
-                            settingsViewModel.updateTheme(colorScheme: colorScheme)
-                        }
-            
-            Text("Sollen wir Sie regelmäßig daran erinnern, ein Eintrag ins Tagebuch zu machen?")
-                .frame(width: 200)
-            Toggle(isOn: settingsViewModel.$authorizationForSendingNotifications) {
-                Text(settingsViewModel.authorizationForSendingNotifications ? "Freigabe erteilt" : "Freigabe erteilen")
-            }.onChange(of: settingsViewModel.authorizationForSendingNotifications) {
-                if settingsViewModel.authorizationForSendingNotifications {
-                    settingsViewModel.requestAuthorization()
-                } else {
-                    settingsViewModel.removeAllNotifications()
-                }
-                
-            }
-            if (settingsViewModel.authorizationForSendingNotifications == true) {
-                DatePicker(
-                    "Zur welchen Uhrzeit sollen wir Sie erinnern?",
-                    selection: settingsViewModel.$selection,
-                    displayedComponents: .hourAndMinute
-                ).onChange(of: settingsViewModel.selection) {
-                    let (hour, minute) = settingsViewModel.extractHourAndMinute(from: settingsViewModel.selection)
-                    settingsViewModel
-                        .sendDailyNotificationOnTime(
-                            title: "Tägliche Erinnerung!",
-                            message: "Erzähle mir: Wie war dein Tag?",
-                            hour: hour,
-                            minute: minute
-                        )
-                }
-            }
         }.animatedBackground()
     }
 }
