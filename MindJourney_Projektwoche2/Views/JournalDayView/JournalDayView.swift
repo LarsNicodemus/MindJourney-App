@@ -35,7 +35,7 @@ struct JournalDayView: View {
                         if !day.audios.isEmpty {
                             AudioPlayView(
                                 jEN: day,
-                                audio: day.audios.first ?? "")
+                                audio: day.audios[0])
                         }
                         if !day.goal {
                             GoalSubView(goalisChecked: $journalVM.goalChecked)

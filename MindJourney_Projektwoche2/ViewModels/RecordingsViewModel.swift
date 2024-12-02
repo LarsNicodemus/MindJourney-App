@@ -186,4 +186,12 @@ class RecorderViewModel: NSObject, ObservableObject, AVAudioRecorderDelegate, AV
             self.recordingDuration += 1
         }
     }
+    
+    func loadAudio(from path: String) -> URL? {
+            guard let url = URL(string: path),
+                  let imageData = try? Data(contentsOf: url) else {
+                return nil
+            }
+            return url
+        }
 }
